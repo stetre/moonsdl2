@@ -1,0 +1,60 @@
+
+== Preface
+
+This is the reference manual of *MoonSDL2*, which is a 
+https://www.lua.org[*Lua*] binding library for the
+https://wiki.libsdl.org/SDL2/FrontPage[*Simple DirectMedia Layer 2.0 (SDL2)*] and its extension libraries 
+https://wiki.libsdl.org/SDL2_image/FrontPage[*SDL_image*],
+https://wiki.libsdl.org/SDL2_mixer/FrontPage[*SDL_mixer*], and
+https://wiki.libsdl.org/SDL2_ttf/FrontPage[*SDL_ttf*].
+footnote:[
+This manual is written in
+http://www.methods.co.nz/asciidoc/[AsciiDoc], rendered with
+http://asciidoctor.org/[AsciiDoctor] and a CSS from the
+https://github.com/asciidoctor/asciidoctor-stylesheet-factory[AsciiDoctor Stylesheet Factory].]
+
+It is assumed that the reader is familiar with both SDL2 and the Lua programming language.
+
+For convenience of reference, this document contains external (deep) links to the 
+https://www.lua.org/manual/5.3/manual.html[Lua Reference Manual] and the 
+https://wiki.libsdl.org/SDL2/FrontPage[SDL2 wiki].
+
+=== Getting and installing
+
+For installation intructions, refer to the README file in the 
+https://github.com/stetre/moonsdl2[*MoonSDL2 official repository*]
+on GitHub.
+
+=== Module organization
+
+The MoonSDL2 module is loaded using Lua's 
+http://www.lua.org/manual/5.3/manual.html#pdf-require[require]() and
+returns a table containing the functions it provides 
+(as usual with Lua modules). This manual assumes that such
+table is named *sdl*, i.e. that it is loaded with:
+
+[source,lua,indent=1]
+----
+sdl = require("moonsdl2")
+----
+
+but nothing forbids the use of a different name.
+
+=== Examples
+
+Complete examples can be found in the *examples/* directory of the release package.
+
+=== License
+
+MoonSDL2 is released under the *MIT/X11 license* (same as
+http://www.lua.org/license.html[Lua], and with the same only requirement to give proper
+credits to the original author). 
+The copyright notice is in the LICENSE file in the base directory
+of the https://github.com/stetre/moonsdl2[official repository] on GitHub.
+
+[[see-also]]
+=== See also
+
+MoonSDL2 is part of https://github.com/stetre/moonlibs[MoonLibs], a collection of 
+Lua libraries for graphics and audio programming.
+

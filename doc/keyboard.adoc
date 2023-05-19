@@ -1,0 +1,97 @@
+
+[[keyboard]]
+=== keyboard
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryKeyboard[Keyboard Support].#
+
+Referring to the table at https://wiki.libsdl.org/SDL2/SDL_Scancode[SDL_Scancode], in the
+following functions _name_ is the _Key Name_ (a string), _scancode_ is the _SDL_Scancode Value_
+(an integer), and _keycode_ is the _SDL_Keycode Value_ (also an integer). The *sdl* table
+contains *sdl.SCANCODE_XXX* entries for _SDL_SCANCODE_XXX_ values, and *sdl.KEYCODE_XXX* entries
+for _SDLK_XXX_ values.
+
+[[get_key_name]]
+* _name_ = *get_key_name*(_keycode_) +
+_keycode_ = *get_key_from_name*(_name_) +
+_name_ = *get_scancode_name*(_scancode_) +
+_scancode_ = *get_scancode_from_name*(_name_) +
+_keycode_ = *get_key_from_scancode*(_scancode_) +
+_scancode_ = *get_scancode_from_key*(_key_) +
+[small]#_name_: string (key name) +
+_scancode_ integer (_sdl.SCANCODE_XXX_), +
+_keycode_: integer (_sdl.KEYCODE_XXX_), +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetKeyName[SDL_GetKeyName],
+https://wiki.libsdl.org/SDL2/SDL_GetKeyFromName[SDL_GetKeyFromName],
+https://wiki.libsdl.org/SDL2/SDL_GetScancodeName[SDL_GetScancodeName],
+https://wiki.libsdl.org/SDL2/SDL_GetScancodeFromName[SDL_GetScancodeFromName],
+https://wiki.libsdl.org/SDL2/SDL_GetKeyFromScancode[SDL_GetKeyFromScancode],
+https://wiki.libsdl.org/SDL2/SDL_GetScancodeFromKey[SDL_GetScancodeFromKey].#
+
+[[get_key_state]]
+* <<keystate, _keystate_>> = *get_key_state*(_name_) +
+<<keystate, _keystate_>> = *get_key_state*(_scancode_) +
+*reset_keyboard*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetKeyboardState[SDL_GetKeyboardState],
+https://wiki.libsdl.org/SDL2/SDL_ResetKeyboard[SDL_ResetKeyboard].#
+
+[[set_mod_state]]
+* *set_mod_state*(<<keymod, _keymod_>>) +
+<<keymod, _keymod_>> = *get_mod_state*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetModState[SDL_SetModState],
+https://wiki.libsdl.org/SDL2/SDL_GetModState[SDL_GetModState].#
+
+[[get_keyboard_focus]]
+* <<window, _window_>> | _nil_ = *get_keyboard_focus*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetKeyboardFocus[SDL_GetKeyboardFocus].#
+
+[[start_text_input]]
+* *start_text_input*( ) +
+*stop_text_input*( ) +
+*set_text_input_rect*([<<rect, _rect_>>]) +
+_boolean_ = *is_text_input_active*( ) +
+_boolean_ = *is_text_input_shown*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_StartTextInput[SDL_StartTextInput],
+https://wiki.libsdl.org/SDL2/SDL_StopTextInput[SDL_StopTextInput],
+https://wiki.libsdl.org/SDL2/SDL_SetTextInputRect[SDL_SetTextInputRect],
+https://wiki.libsdl.org/SDL2/SDL_IsTextInputActive[SDL_IsTextInputActive],
+https://wiki.libsdl.org/SDL2/SDL_IsTextInputShown[SDL_IsTextInputShown].#
+
+[[has_screen_keyboard_support]]
+* _boolean_ = *has_screen_keyboard_support*(<<window, _window_>>) +
+_boolean_ = *is_screen_keyboard_shown*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HasScreenKeyboardSupport[SDL_HasScreenKeyboardSupport],
+https://wiki.libsdl.org/SDL2/SDL_IsScreenKeyboardShown[SDL_IsScreenKeyboardShown].#
+
+[[clear_composition]]
+* *clear_composition*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_ClearComposition[SDL_ClearComposition].#
+
+[[set_clipboard_text]]
+* *set_clipboard_text*([_text_]) +
+_text_ = *get_clipboard_text*( ) +
+_boolean_ = *has_clipboard_text*( ) +
+[small]#_text_: string (_nil_ is equivalent to an empty string). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetClipboardText[SDL_SetClipboardText],
+https://wiki.libsdl.org/SDL2/SDL_GetClipboardText[SDL_GetClipboardText],
+https://wiki.libsdl.org/SDL2/SDL_HasClipboardText[SDL_HasClipboardText].#
+
+[[set_primary_selection_text]]
+* *set_primary_selection_text*(_text_) +
+_text_ = *get_primary_selection_text*( ) +
+_boolean_ = *has_primary_selection_text*( ) +
+[small]#_text_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetPrimarySelectionText[SDL_SetPrimarySelectionText],
+https://wiki.libsdl.org/SDL2/SDL_GetPrimarySelectionText[SDL_GetPrimarySelectionText],
+https://wiki.libsdl.org/SDL2/SDL_HasPrimarySelectionText[SDL_HasPrimarySelectionText].#
+
+////
+££
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+
+////
+

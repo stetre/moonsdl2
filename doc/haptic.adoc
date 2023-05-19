@@ -1,0 +1,88 @@
+
+[[haptic]]
+=== haptic
+
+[[haptic_open]]
+* _haptic_ = *haptic_open*(_hapticindex_) +
+_haptic_ = *haptic_open*(<<joystick, _joystick_>>) +
+_haptic_ = *haptic_open*(<<gamecontroller, _gamecontroller_>>) +
+_haptic_ = *haptic_open_from_mouse*( ) +
+_haptic_++:++*close*( ) +
+[small]#_hapticindex_: integer(_1 .. numhaptics_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticOpen[SDL_HapticOpen],
+https://wiki.libsdl.org/SDL2/SDL_HapticOpenFromJoystick[SDL_HapticOpenFromJoystick],
+https://wiki.libsdl.org/SDL2/SDL_HapticOpenFromMouse[SDL_HapticOpenFromMouse],
+https://wiki.libsdl.org/SDL2/SDL_HapticClose[SDL_HapticClose].#
+
+[[num_haptics]]
+* _numhaptics_ = *num_haptics*( ) +
+_boolean_ = *mouse_is_haptic*( ) +
+_boolean_ = *is_haptic_opened*(_hapticindex_) +
+_string_ = *haptic_name*(_hapticindex_) +
+[small]#_hapticindex_: integer(_1 .. numhaptics_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_NumHaptics[SDL_NumHaptics],
+https://wiki.libsdl.org/SDL2/SDL_MouseIsHaptic[SDL_MouseIsHaptic],
+https://wiki.libsdl.org/SDL2/SDL_HapticOpened[SDL_HapticOpened],
+https://wiki.libsdl.org/SDL2/SDL_HapticName[SDL_HapticName].#
+
+[[haptic_query]]
+* _hapticindex_ = _haptic_++:++*get_index*( ) +
+_string_ = _haptic_++:++*get_name*( ) +
+<<hapticfeatures, _hapticfeatures_>> = _haptic_++:++*query*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticIndex[SDL_HapticIndex],
+https://wiki.libsdl.org/SDL2/SDL_HapticName[SDL_HapticName],
+https://wiki.libsdl.org/SDL2/SDL_HapticQuery[SDL_HapticQuery].#
+
+[[haptic_effects]]
+* _numeffects_ _haptic_++:++*num_effects*( ) +
+_numeffects_ _haptic_++:++*num_effects_playing*( ) +
+_boolean_ = _haptic_++:++*effect_supported*(<<hapticeffect, _hapticeffect_>>) +
+_id_ = _haptic_++:++*new_effect*(<<hapticeffect, _hapticeffect_>>) +
+_haptic_++:++*update_effect*(_id_ , <<hapticeffect, _hapticeffect_>>) +
+_haptic_++:++*destroy_effect*(_id_) +
+_haptic_++:++*run_effect*(_id_, [_iterations=1_]) +
+_haptic_++:++*run_effect_indefinitely*(_id_) +
+_haptic_++:++*stop_effect*(_id_) +
+_boolean_ = _haptic_++:++*is_effect_running*(_id_) +
+[small]#_id_: integer, +
+_iterations_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticNumEffects[SDL_HapticNumEffects],
+https://wiki.libsdl.org/SDL2/SDL_HapticNumEffectsPlaying[SDL_HapticNumEffectsPlaying],
+https://wiki.libsdl.org/SDL2/SDL_HapticEffectSupported[SDL_HapticEffectSupported],
+https://wiki.libsdl.org/SDL2/SDL_HapticNewEffect[SDL_HapticNewEffect],
+https://wiki.libsdl.org/SDL2/SDL_HapticUpdateEffect[SDL_HapticUpdateEffect],
+https://wiki.libsdl.org/SDL2/SDL_HapticDestroyEffect[SDL_HapticDestroyEffect],
+https://wiki.libsdl.org/SDL2/SDL_HapticRunEffect[SDL_HapticRunEffect],
+https://wiki.libsdl.org/SDL2/SDL_HapticStopEffect[SDL_HapticStopEffect],
+https://wiki.libsdl.org/SDL2/SDL_HapticGetEffectStatus[SDL_HapticGetEffectStatus].#
+
+[[haptic_num_axes]]
+* _numaxes_ _haptic_++:++*num_axes*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticNumAxes[SDL_HapticNumAxes].#
+
+[[haptic_set_gain]]
+* _haptic_++:++*set_gain*(_integer_) +
+_haptic_++:++*set_autocenter*(_integer_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticSetGain[SDL_HapticSetGain],
+https://wiki.libsdl.org/SDL2/SDL_HapticSetAutocenter[SDL_HapticSetAutocenter].#
+
+[[haptic_pause]]
+* _haptic_++:++*pause*( ) +
+_haptic_++:++*resume*( ) +
+_haptic_++:++*stop_all*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticPause[SDL_HapticPause],
+https://wiki.libsdl.org/SDL2/SDL_HapticUnpause[SDL_HapticUnpause],
+https://wiki.libsdl.org/SDL2/SDL_HapticStopAll[SDL_HapticStopAll].#
+
+[[haptic_rumble_init]]
+* _haptic_++:++*rumble_init*( ) +
+_haptic_++:++*rumble_play*(_strength_, _duration_) +
+_haptic_++:++*rumble_stop*( ) +
+_boolean_ = _haptic_++:++*rumble_supported*( ) +
+[small]#_strength_: float, +
+_duration_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticRumbleInit[SDL_HapticRumbleInit],
+https://wiki.libsdl.org/SDL2/SDL_HapticRumblePlay[SDL_HapticRumblePlay],
+https://wiki.libsdl.org/SDL2/SDL_HapticRumbleStop[SDL_HapticRumbleStop],
+https://wiki.libsdl.org/SDL2/SDL_HapticRumbleSupported[SDL_HapticRumbleSupported].#
+

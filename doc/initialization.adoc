@@ -1,0 +1,46 @@
+
+[[initialization]]
+== Initialization
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryInit[Initialization and Shutdown].#
+
+[[init]]
+* _sdlinitflags_, _imginitflags_, _mixinitflags_ = *init*( ) +
+_sdlinitflags_, _imginitflags_, _mixinitflags_ = *was_init*( ) +
+[small]#Attempts to initialize all SDL2 subystems as well as the extension libraries. +
+The returned flags can be used to check what was actually initialized. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_Init[SDL_Init], https://wiki.libsdl.org/SDL2_image/IMG_Init[IMG_Init], https://wiki.libsdl.org/SDL2_mixer/Mix_Init[Mix_Init], https://wiki.libsdl.org/SDL2_ttf/TTF_Init[TTF_Init].#
+
+[[quit]]
+* *quit*( ) +
+[small]#Cleans up all initialized subsystems and extension libraries. +
+This function is automatically executed at exit (including on error). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_Quit[SDL_Quit], https://wiki.libsdl.org/SDL2_image/IMG_Quit[IMG_Quit], https://wiki.libsdl.org/SDL2_mixer/Mix_Quit[Mix_Quit], https://wiki.libsdl.org/SDL2_ttf/TTF_Quit[TTF_Quit].#
+
+
+[[hints]]
+=== hints
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryHints[Configuration Variables].#
+
+[[set_hint]]
+* _boolean_ = *set_hint*(_name_, _value_, [_priority_]) +
+_value_ = *get_hint*(_name_) +
+[small]#_name_, _value_: string, as per 
+https://github.com/libsdl-org/SDL/blob/SDL2/include/SDL_hints.h[SDL_hints.h], +
+_priority_: <<hintpriority, hintpriority>>. +
+The returned _value_ is _nil_ if the hint isn't set. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetHint[SDL_SetHint], https://wiki.libsdl.org/SDL2/SDL_SetHintWithPriority[SDL_SetHintWithPriority], https://wiki.libsdl.org/SDL2/SDL_GetHint[SDL_GetHint].#
+
+
+[[reset_hint]]
+* _boolean_ = *reset_hint*(_name_) +
+*reset_hints*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_ResetHint[SDL_ResetHint], https://wiki.libsdl.org/SDL2/SDL_ResetHints[SDL_ResetHints].#
+
+* _hintcb_ = *add_hint_callback*(_name_, _func_) +
+_hintcb_++:++*del*( ) +
+[small]#The passed callback _func_ is executed as *func(name, oldval, newval)*, where all arguments are strings (or _nil_ for unset values). +
+To unregister the callback, use the _del(&nbsp;)_ method of the returned _hintcb_ object. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_AddHintCallback[SDL_AddHintCallback].#
+

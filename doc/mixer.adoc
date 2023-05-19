@@ -1,0 +1,278 @@
+
+[[mixer]]
+== Audio mixer
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer[SDL2_mixer].#
+
+NOTE: SDL_mixer uses the term https://wiki.libsdl.org/SDL2_mixer/Mix_AllocateChannels#remarks['channel']
+to refer both to audio channels (mono/stereo/surround), and to separate sources of audio data. To avoid confusion, the latter are here renamed as <<tracks, _tracks_>>.
+
+[[open_audio]]
+* *open_audio*(_frequency_, [<<audioformat, _audioformat_>>], _channels_, _chunksize_) +
+*close_audio*( ) +
+[small]#The following definitions are available: _sdl.MIX_DEFAULT_FREQUENCY_, _sdl.MIX_DEFAULT_FORMAT_, and  _sdl.MIX_DEFAULT_CHANNELS_. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_OpenAudio[Mix_OpenAudio],
+https://wiki.libsdl.org/SDL2_mixer/Mix_CloseAudio[Mix_CloseAudio].#
+
+////
+*open_audio_device*(_frequency_, [<<audioformat, _audioformat_>>], _channels_, _chunksize_, [_device_], [<<audioallowflags, _audioallowflags_>>]) +
+https://wiki.libsdl.org/SDL2_mixer/Mix_OpenAudioDevice[Mix_OpenAudioDevice],
+		{ "get_audio_device_names", GetAudioDeviceNames},
+		{ "get_audio_device_spec", GetAudioDeviceSpec},
+////
+
+[[query_audio]]
+* _open_, _frequency_, <<audioformat, _audioformat_>>, _channels_ = *query_audio*( ) +
+_boolean_ = *has_chunk_decoder*( ) +
+_boolean_ = *has_music_decoder*( ) +
+_{string}_ = *get_chunk_decoders*( ) +
+_{string}_ = *get_music_decoders*( ) +
+[small]#_open_: boolean, +
+_frequency_, _channels_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_QuerySpec[Mix_QuerySpec],
+https://wiki.libsdl.org/SDL2_mixer/Mix_HasChunkDecoder[Mix_HasChunkDecoder],
+https://wiki.libsdl.org/SDL2_mixer/Mix_HasMusicDecoder[Mix_HasMusicDecoder],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetChunkDecoder[Mix_GetChunkDecoder],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicDecoder[Mix_GetMusicDecoder].#
+
+
+[[set_master_volume]]
+* *set_master_volume*(_value_) +
+_value_ = *get_master_volume*( ) +
+[small]#_value_: integer (_0 .. sdl.MIX_MAX_VOLUME_). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_MasterVolume[Mix_MasterVolume].#
+
+[[set_sound_fonts]]
+* *set_sound_fonts*([_paths_]) +
+_paths_ | _nil_ = *get_sound_fonts*( ) +
+_boolean_ = *each_sound_font*(_func_) +
+[small]#_paths_: string. +
+The _func_ callback is executed as *boolean = func(path)*. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetSoundFonts[Mix_SetSoundFonts],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetSoundFonts[Mix_GetSoundFonts],
+https://wiki.libsdl.org/SDL2_mixer/Mix_EachSoundFont[Mix_EachSoundFont].#
+
+[[tracks]]
+=== tracks
+
+[[num_tracks]]
+* _numtracks_ = *num_tracks*( ) +
+*allocate_tracks*(_n_) +
+_n_ = *reserve_tracks*(_n_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_AllocateChannels[Mix_AllocateChannels],
+https://wiki.libsdl.org/SDL2_mixer/Mix_ReserveChannels[Mix_ReserveChannels].#
+
+[[track_set_panning]]
+* *track_set_panning*([_track_], _left_, _right_) +
+*track_unset_panning*([_track_]) +
+[small]#_track_: integer, or _nil_ for all tracks. +
+_left_, _right_: integer (0 .. 255). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetPanning[Mix_SetPanning].#
+
+[[track_set_distance]]
+* *track_set_distance*([_track_], _distance_) +
+*track_set_position*([_track_], _angle_, _distance_) +
+[small]#_angle_, _distance_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetDistance[Mix_SetDistance],
+https://wiki.libsdl.org/SDL2_mixer/Mix_SetPosition[Mix_SetPosition].#
+
+[[track_set_reverse_stereo]]
+* *track_set_reverse_stereo*([_track_], _flip_) +
+[small]#_flip_: boolean. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetReverseStereo[Mix_SetReverseStereo].#
+
+[[track_set_volume]]
+* *track_set_volume*([_track_], _value_) +
+_value_ = *track_get_volume*([_track_]) +
+[small]#_value_: integer (_0 .. sdl.MIX_MAX_VOLUME_). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_Volume[Mix_Volume].#
+
+[[track_halt]]
+* *track_halt*([_track_]) +
+*track_pause*([_track_]) +
+*track_resume*([_track_]) +
+_boolean_, _n_ = *track_paused*([_track_]) +
+_boolean_, _n_ = *track_playing*([_track_]) +
+[small]#_n_: integer (no. of tracks in the queried state, returned only if _track=nil_). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_HaltChannel[Mix_HaltChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_Pause[Mix_Pause],
+https://wiki.libsdl.org/SDL2_mixer/Mix_Resume[Mix_Resume],
+https://wiki.libsdl.org/SDL2_mixer/Mix_Paused[Mix_Paused],
+https://wiki.libsdl.org/SDL2_mixer/Mix_Playing[Mix_Playing].#
+
+[[track_expire]]
+* _n_ = *track_expire*([_track_], [_ms_]) +
+[small]#_ms_: integer (milliseconds), or _nil_ to remove the expiration. +
+_n_: integer (no. of channels that changed expirations). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_ExpireChannel[Mix_ExpireChannel].#
+
+[[track_fading]]
+* _boolean_ = *track_fading*(_track_) +
+*track_fade_out*([_track_], _ms_) +
+*track_fade_in*([_track_], _ms_, <<chunk, _chunk_>>, [_loopms=0_], [_maxms=-1_]) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_FadingChannel[Mix_FadingChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeOutChannel[Mix_FadeOutChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannel[Mix_FadeInChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannelTimed[Mix_FadeInChannelTimed].#
+
+[[track_get_chunk]]
+* <<chunk, _chunk_>> | _nil_ = *track_get_chunk*(_track_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_GetChunk[Mix_GetChunk].#
+
+[[set_track_finished_callback]]
+* *set_track_finished_callback*([_func_]) +
+[small]#The _func_ callback is executed as *func(track)*. +
+Passing _func=nil_ unregisters the callback. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_ChannelFinished[Mix_ChannelFinished].#
+
+[[group_add]]
+* *group_add*(_tag_, _track_) +
+*group_add*(_tag_, _fromtrack_, _totrack_) +
+*group_remove*(_track_) +
+*group_remove*(_fromtrack_, _totrack_) +
+_ntracks_ = *group_count*(_tag_) +
+[small]#_tag_: integer (_tag = -1_ is reserved for removal operations). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_GroupChannels[Mix_GroupChannels]
+https://wiki.libsdl.org/SDL2_mixer/Mix_GroupCount[Mix_GroupCount].#
+
+[[group_available]]
+* _track_ | _nil_ = *group_available*(_tag_) +
+_track_ | _nil_ = *group_oldest*(_tag_) +
+_track_ | _nil_ = *group_newest*(_tag_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_GroupAvailable[Mix_GroupAvailable],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GroupOldest[Mix_GroupOldest],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GroupNewer[Mix_GroupNewer].#
+
+[[group_halt]]
+* *group_halt*(_tag_) +
+*group_fade_out*(_tag_, _ms_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_HaltGroup[Mix_HaltGroup],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeOutGroup[Mix_FadeOutGroup].#
+
+
+[[chunks]]
+=== chunks
+
+[[load_wav]]
+* _chunk_ = *load_wav*(_file_) +
+_chunk_++:++*free*( ) +
+[small]#_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_LoadWav[Mix_LoadWav],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FreeChunk[Mix_FreeChunk].#
+
+[[chunk_play]]
+* _chunk_++:++*play*([_track_], [_loops=0_], [_maxms=-1_]) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannel[Mix_PlayChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannelTimed[Mix_PlayChannelTimed].#
+
+[[chunk_fade_in]]
+* _chunk_++:++*fade_in*(_ms_, [_track_], [_loopms=0_], [_maxms=-1_]) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannel[Mix_FadeInChannel],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannelTimed[Mix_FadeInChannelTimed].#
+
+[[set_volume]]
+* _chunk_++:++*set_volume*(_value_) +
+_value_ = _chunk_++:++*get_volume*( ) +
+[small]#_value_: integer (_0 .. sdl.MIX_MAX_VOLUME_). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_VolumeChunk[Mix_VolumeChunk].#
+
+[[music]]
+=== music
+
+[[load_music]]
+* _music_ = *load_music*(_file_) +
+_music_++:++*free*( ) +
+[small]#_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_LoadMUS[Mix_LoadMUS],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FreeMusic[Mix_FreeMusic].#
+
+[[music_methods]]
+* <<musictype, _musictype_>> = _music_++:++*get_type*( ) +
+_string_ = _music_++:++*get_title*( ) +
+_string_ = _music_++:++*get_title_tag*( ) +
+_string_ = _music_++:++*get_artist_tag*( ) +
+_string_ = _music_++:++*get_album_tag*( ) +
+_string_ = _music_++:++*get_copyright_tag*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicType[Mix_GetMusicType],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicTitle[Mix_GetMusicTitle],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicTitleTag[Mix_GetMusicTitleTag],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicArtistTag[Mix_GetMusicArtistTag],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicAlbumTag[Mix_GetMusicAlbumTag],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicCopyrightTag[Mix_GetMusicCopyrightTag].#
+
+[[music_play]]
+* _music_++:++*play*([_loops=0_]) +
+_music_++:++*halt*( ) +
+_music_++:++*pause*( ) +
+_music_++:++*resume*( ) +
+_music_++:++*rewind*( ) +
+_boolean_ = _music_++:++*paused*( ) +
+_boolean_ = _music_++:++*playing*( ) +
+*music_halt*( ) +
+*music_pause*( ) +
+*music_resume*( ) +
+*music_rewind*( ) +
+_boolean_ = *music_paused*( ) +
+_boolean_ = *music_playing*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_PlayMusic[Mix_PlayMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_HaltMusic[Mix_HaltMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_PauseMusic[Mix_PauseMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_ResumeMusic[Mix_ResumeMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_RewindMusic[Mix_RewindMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_PausedMusic[Mix_PausedMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_PlayingMusic[Mix_PlayingMusic].#
+
+[[music_fade_in]]
+* _music_++:++*fade_in*(_ms_, [_position=0.0_], [_loops=0_]) +
+_playing_ = _music_++:++*fade_out*(_ms_) +
+_boolean_ = _music_++:++*fading*( ) +
+_playing_ = *music_fade_out*(_ms_) +
+_boolean_ = *music_fading*( ) +
+[small]#_position_: float (seconds), +
+_playing_: boolean. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInMusic[Mix_FadeInMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInMusicPos[Mix_FadeInMusicPos],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadeOutMusic[Mix_FadeOutMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_FadingMusic[Mix_FadingMusic].#
+
+[[music_set_volume]]
+* _music_++:++*set_volume*(_value_) +
+_value_ = _music_++:++*get_volume*( ) +
+*music_set_volume*(_value_) +
+_value_ = *music_get_volume*( ) +
+[small]#_value_: integer (_0 .. sdl.MIX_MAX_VOLUME_). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetVolumeMusic[Mix_SetVolumeMusic],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetVolumeMusic[Mix_GetVolumeMusic].#
+
+[[music_get_position]]
+* _music_++:++*set_position*(_value_) +
+*music_set_position*(_value_) +
+_value_ = _music_++:++*get_position*( ) +
+_value_ = _music_++:++*get_duration*( ) +
+_value_ = _music_++:++*get_loop_start_time*( ) +
+_value_ = _music_++:++*get_loop_end_time*( ) +
+_value_ = _music_++:++*get_loop_length_time*( ) +
+[small]#_value_: float (seconds). +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_SetMusicPosition[Mix_SetMusicPosition],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicPosition[Mix_GetMusicPosition],
+https://wiki.libsdl.org/SDL2_mixer/Mix_MusicDuration[Mix_MusicDuration],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicLoopStartTime[Mix_GetMusicLoopStartTime],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicLoopEndTime[Mix_GetMusicLoopEndTime],
+https://wiki.libsdl.org/SDL2_mixer/Mix_GetMusicLoopLengthTime[Mix_GetMusicLoopLengthTime].#
+
+[[set_music_finished_callback]]
+* *set_music_finished_callback*([_func_]) +
+[small]#The _func_ callback is executed as *func( )*. +
+Passing _func=nil_ unregisters the callback. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_HookMusicFinished[Mix_HookMusicFinished].#
+
+////
+££
+[[]]
+* _music_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_[Mix_].#
+
+////
+
+

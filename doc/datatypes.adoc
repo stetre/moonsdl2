@@ -1,0 +1,229 @@
+
+[[datatypes]]
+== Structs and data types
+
+In this document, the _float_ and _integer_ types denote Lua numbers, while other types
+such as _boolean_, _string_, etc denote standard Lua types. Note that _float_
+here just means 'floating point' as opposed to 'integer', and does not imply 
+single-precision.
+
+Events returned by <<poll_events, event handling functions>> and a few other structs used in the SDL2 C API are represented as string-indexed Lua tables, and are described in the subsections that follow.
+
+
+[[rectstructs]]
+=== point, rect, color
+
+Points, rects, and colors are by default represented as Lua arrays containing
+_float_ elements. The meaning of the elements thus depends on their position, as detailed below,
+and there is no syntactic sugar such as _v.x_ and _v.y_ to access them.
+
+* [[point]]
+[small]#*point* = {_x_, _y_} +
+All elements are integers. +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_Point[SDL_Point])#
+
+* [[fpoint]]
+[small]#*fpoint* = {_x_, _y_} +
+All elements are floats. +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_FPoint[SDL_FPoint])#
+
+* [[rect]]
+[small]#*rect* = {_x_, _y_, _w_, _h_} +
+All elements are integers. +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_Rect[SDL_Rect])#
+
+* [[frect]]
+[small]#*frect* = {_x_, _y_, _w_, _h_} +
+All elements are floats. +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_FRect[SDL_FRect])#
+
+* [[color]]
+[small]#*color* = {_r_, _g_, _b_, _a_} +
+All elements are integers (0..255). +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_Color[SDL_Color])#
+
+* [[vertex]]
+[small]#*vertex* = { _position_, _color_, _texcoord_ } +
+_position_: <<fpoint, fpoint>>, +
+_color_: <<color, color>>, +
+_texcoord_: <<fpoint, fpoint>> (opt.). +
+(Rfr: https://wiki.libsdl.org/SDL2/SDL_Vertex[SDL_Vertex])#
+
+
+[[memptr]]
+=== memptr
+
+A *memptr* object is a Lua
+https://www.lua.org/manual/5.4/manual.html#lua_pushlightuserdata[light userdata]
+representing a C pointer (_void++*++_) to a contiguous memory area of suitable size,
+where 'suitable' depends on the context. The size is not checked by MoonSDL2, thus beware of
+the potential dangers.
+
+How such an object is accessed (or obtained, when passed as an argument) is not specified here.
+One may, for example, use _hostmem_ objects from the https://github.com/stetre/moonglmath[MoonGLMATH] library.
+
+include::eventstructs.adoc[]
+
+include::hapticstructs.adoc[]
+
+[[otherstructs]]
+=== other structs
+
+////
+* [[audiospec]]
+[small]#*audiospec* = { +
+_format_; <<audioformat, audioformat>>, +
+_channels_: integer, +
+_silence_: integer, +
+_samples_: integer, +
+_padding_: integer, +
+_size_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_AudioSpec[SDL_AudioSpec])#
+////
+
+* [[controllerbuttonbind]]
+[small]#*controllerbuttonbind* = +
+{ _type_: '_none_' } or +
+{ _type_: '_button_', _button_: integer } or +
+{ _type_: '_axis_', _axis_: integer } or +
+{ _type_: '_hat_', _hat_: integer, _mask_: <<hatstate, hatstate>> } +
+(rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerButtonBind[SDL_GameControllerButtonBind])#
+
+* [[displaymode]]
+[small]#*displaymode* = { +
+_format_: <<pixelformat, pixelformat>>, +
+_w_: integer, +
+_h_: integer, +
+_refresh_rate_: integer, +
+_driverdata_: <<memptr, memptr>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_DisplayMode[SDL_DisplayMode])#
+
+* [[finger]]
+[small]#*finger* = { +
+_finger_id_: integer, +
+_x_: float, +
+_y_: float, +
+_pressure_: float, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_Finger[SDL_Finger])#
+
+* [[hapticfeatures]]
+[small]#*hapticfeatures* = { +
+_constant_: boolean, +
+_sine_: boolean, +
+_leftright_: boolean, +
+_triangle_: boolean, +
+_sawtoothup_: boolean, +
+_sawtoothdown_: boolean, +
+_ramp_: boolean, +
+_spring_: boolean, +
+_damper_: boolean, +
+_inertia_: boolean, +
+_friction_: boolean, +
+_custom_: boolean, +
+_gain_: boolean, +
+_autocenter_: boolean, +
+_status_: boolean, +
+_pause_: boolean, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticQuery[SDL_HapticQuery])#
+
+
+* [[joystickguid]]
+[small]#*joystickguid* = {integer}[16]#
+
+* [[joystickguidinfo]]
+[small]#*joystickguidinfo* = { +
+_vendor_: integer, +
+_product_: integer, +
+_version_: integer, +
+_crc16_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_GetJoystickGUIDInfo[SDL_GetJoystickGUIDInfo])#
+
+* [[keymod]]
+[small]#*keymod* = { +
+_lshift_: boolean, +
+_rshift_: boolean, +
+_shift_: boolean, +
+_lctrl_: boolean, +
+_rctrl_: boolean, +
+_ctrl_: boolean, +
+_lalt_: boolean, +
+_ralt_: boolean, +
+_alt_: boolean, +
+_lgui_: boolean, +
+_rgui_: boolean, +
+_gui_: boolean, +
+_num_: boolean, +
+_caps_: boolean, +
+_mode_: boolean, +
+_scroll_: boolean, +
+_none_: boolean, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_Keymod[SDL_Keymod])#
+
+* [[locale]]
+[small]#*locale* = { +
+_language_: string, +
+_country_: string or _nil_, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_GetPreferredLocales[SDL_GetPreferredLocales])#
+
+* [[messageboxbuttondata]]
+[small]#*messageboxbuttondata* = { +
+_flags_: <<messageboxbuttonflags, messageboxbuttonflags>>, +
+_buttonid_: integer, +
+_text_: string, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MessageBoxButtonData[SDL_MessageBoxButtonData])#
+
+* [[messageboxdata]]
+[small]#*messageboxdata* = { +
+_flags_: <<messageboxflags, messageboxflags>>, +
+_window_: <<window, window>> (opt.), +
+_title_: string, +
+_message_: string, +
+_buttons_: {<<messageboxbuttondata, messageboxbuttondata>>}, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MessageBoxData[SDL_MessageBoxData])#
+
+* [[mousebuttonstate]]
+[small]#*mousebuttonstate* = { +
+_left_: boolean, +
+_right_: boolean, +
+_middle_: boolean, +
+_x1_: boolean, +
+_x2_: boolean, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_GetMouseState[SDL_GetMouseState])#
+
+* [[rendererinfo]]
+[small]#*rendererinfo* = { +
+_name_: string, +
+_flags_: <<rendererflags, rendererflags>>, +
+_texture_formats_: <<pixelformat, pixelformat>>, +
+_max_texture_width_: integer, +
+_max_texture_height_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_RendererInfo[SDL_RendererInfo])#
+
+* [[touchdevice]]
+[small]#*touchdevice* = { +
+_touch_id_: integer, +
+_name_: string
+_type_: <<touchdevicetype, touchdevicetype>>, +
+_num_fingers_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_GetTouchDevice[SDL_GetTouchDevice])#
+
+////
+££
+* [[]]
+[small]#** = { +
+@@TODO, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_])#
+
+* [[]]
+[small]#** = { +
+}#
+
+__: string, +
+__: boolean, +
+__: float, +
+__: integer, +
+__: <<, >>, +
+__: {<<, >>}, +
+
+////
+

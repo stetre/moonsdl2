@@ -1,0 +1,135 @@
+
+[[misc]]
+== Miscellanea
+
+[[messagebox]]
+=== messagebox
+
+[[create_message_box]]
+* _messagebox_ = *create_message_box*(<<messageboxdata, messageboxdata>>) +
+_messagebox_++:++*set_color_scheme*([_colors_]) +
+_buttonid_ = _messagebox_++:++*show*( ) +
+_messagebox_++:++*delete*( ) +
+[small]#_buttonid_: integer (identifying the pressed button), +
+_colors_: {<<color, color>>}[5], defining (in this order) the color of 1) background, 2) text, 3) button border, 4) button background, and 5) button selected. Only the rgb components are relevant (any alpha component is ignored). Pass _colors=nil_ to restore the default color scheme. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_ShowMessageBox[SDL_ShowMessageBox].#
+
+[[show_simple_message_box]]
+* *show_simple_message_box*(<<messageboxflags, _messageboxflags_>>, _title_, _message_, [<<window, _window_>>]) +
+[small]#_title_, _message_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_ShowSimpleMessageBox[SDL_ShowSimpleMessageBox].#
+
+
+[[rectfun]]
+=== rectangle functions
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryRect[Rectangle Functions].#
+
+[[point_in_rect]]
+* _boolean_ = *point_in_rect*(<<fpoint, _fpoint_>>, <<frect, _frect_>>) +
+_boolean_ = *rect_empty*(<<frect, _frect_>>) +
+_boolean_ = *rect_equals*(<<frect, _frect~1~_>>, <<frect, _frect~2~_>>, [_epsilon_]) +
+_boolean_ = *has_intersection*(<<frect, _frect~1~_>>, <<frect, _frect~2~_>>) +
+<<frect, _frect_>> | _nil_ = *intersect_rect*(<<frect, _frect~1~_>>, <<frect, _frect~2~_>>) +
+<<frect, _frect_>> = *union_rect*(<<frect, _frect~1~_>>, <<frect, _frect~2~_>>) +
+_boolean_, <<frect, _frect_>> = *enclose_points*(_{<<fpoint, fpoint>>}_, [<<frect, _frect~clip~_>>]) +
+_nil_ | _x~1~_, _y~1~_, _x~2~_, _y~2~_ = *intersect_rect_and_line*(<<frect, _frect_>>, _x~1~_, _y~1~_, _x~2~_, _y~2~_) +
+_nil_ | <<fpoint, _fpoint~1~_>>,  <<fpoint, _fpoint~2~_>> = *intersect_rect_and_line*(<<frect, _frect_>>, <<fpoint, _fpoint~1~_>>,  <<fpoint, _fpoint~2~_>>) +
+[small]#_epsilon_: float. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_PointInFRect[SDL_PointInFRect],
+https://wiki.libsdl.org/SDL2/SDL_FRectEmpty[SDL_FRectEmpty],
+https://wiki.libsdl.org/SDL2/SDL_FRectEquals[SDL_FRectEquals],
+https://wiki.libsdl.org/SDL2/SDL_FRectEqualsEpsilon[SDL_FRectEqualsEpsilon],
+https://wiki.libsdl.org/SDL2/SDL_HasIntersectionF[SDL_HasIntersectionF],
+https://wiki.libsdl.org/SDL2/SDL_IntersectFRect[SDL_IntersectFRect],
+https://wiki.libsdl.org/SDL2/SDL_UnionFRect[SDL_UnionFRect],
+https://wiki.libsdl.org/SDL2/SDL_EncloseFPoints[SDL_EncloseFPoints],
+https://wiki.libsdl.org/SDL2/SDL_IntersectFRectAndLine[SDL_IntersectFRectAndLine].#
+
+[[logs]]
+=== log functions
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryLog[Log Handling].#
+
+[[log_set_priority]]
+* *log_set_priority*(_category_, _priority_) +
+*log_set_all_priority*(_priority_) +
+*log_reset_priorities*( ) +
+_priority_ = *log_get_priority*(_category_) +
+[small]#_category_: <<logcategory, logcategory>> or integer (for custom categories), +
+_priority_: <<logpriority, logpriority>>. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetPriority[SDL_SetPriority], 
+https://wiki.libsdl.org/SDL2/SDL_SetAllPriority[SDL_SetAllPriority],
+https://wiki.libsdl.org/SDL2/SDL_ResetPriority[SDL_ResetPriority],
+https://wiki.libsdl.org/SDL2/SDL_GetPriority[SDL_GetPriority].#
+
+[[log_verbose]]
+* *log*(_message_) +
+*log_verbose*(_category_, _message_) +
+*log_debug*(_category_, _message_) +
+*log_info*(_category_, _message_) +
+*log_warn*(_category_, _message_) +
+*log_error*(_category_, _message_) +
+*log_critical*(_category_, _message_) +
+*log_message*(_category_, _priority_, _message_) +
+[small]#_message_: string, +
+_category_: <<logcategory, logcategory>> or integer (for custom categories), +
+_priority_: <<logpriority, logpriority>>. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_Log[SDL_Log], 
+https://wiki.libsdl.org/SDL2/SDL_LogVerbose[SDL_LogVerbose], 
+https://wiki.libsdl.org/SDL2/SDL_LogDebug[SDL_LogDebug], 
+https://wiki.libsdl.org/SDL2/SDL_LogInfo[SDL_LogInfo], 
+https://wiki.libsdl.org/SDL2/SDL_LogWarn[SDL_LogWarn], 
+https://wiki.libsdl.org/SDL2/SDL_LogError[SDL_LogError], 
+https://wiki.libsdl.org/SDL2/SDL_LogCritical[SDL_LogCritical],
+https://wiki.libsdl.org/SDL2/SDL_LogMessage[SDL_LogMessage].#
+
+[[log_set_output_function]]
+* *log_set_output_function*([_func_]) +
+[small]#The passed callback _func_ is executed as *func(category, priority, message)*. +
+Passing _func=nil_ unregisters the callback. +
+https://wiki.libsdl.org/SDL2/SDL_LogSetOutputFunction[SDL_LogSetOutputFunction].#
+
+
+
+[[otherfun]]
+=== other functions
+
+[[trace_objects]]
+* *trace_objects*(_boolean_) +
+[small]#Enable/disable tracing of objects creation and destruction (which by default
+is disabled). +
+If enabled, a printf is generated whenever an object is created or deleted,
+indicating the object type and the value of its raw SDL2 handle.#
+
+[[get_platform]]
+* _string_ = *get_platform*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetPlatform[SDL_GetPlatform].#
+
+[[get_power_info]]
+* _secs_, _pct_ = *get_power_info*( ) +
+[small]#_secs_, _pct_: integer, +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetPowerInfo[SDL_GetPowerInfo].#
+
+[[get_preferred_locales]]
+* _{<<locale, locale>>}_ = *get_preferred_locales*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetPreferredLocales[SDL_GetPreferredLocales].#
+
+[[get_base_path]]
+* _path_ = *get_base_path*( ) +
+_path_ = *get_pref_path*(_org_, _app_) +
+[small]#_org_, _app_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetBasePath[SDL_GetBasePath],
+https://wiki.libsdl.org/SDL2/SDL_GetPrefPath[SDL_GetPrefPath].#
+
+////
+££
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+
+////
+

@@ -1,0 +1,54 @@
+
+[[time]]
+== Time handling
+
+[[ticks]]
+=== ticks
+
+[[get_ticks]]
+* _ticks_ = *get_ticks*( ) +
+_ticks_ = *ticks_passed*(_t~1~_, _t~2~_) +
+*delay*(_ticks_) +
+[small]#_ticks_, _t~1~_, _t~2~_: integer (milliseconds). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetTicks[SDL_GetTicks],
+https://wiki.libsdl.org/SDL2/SDL_TICKS_PASSED[SDL_PASSED],
+https://wiki.libsdl.org/SDL2/SDL_Delay[SDL_Delay].#
+
+[[get_performance_counter]]
+* _ticks_ = *get_performance_counter*( ) +
+_tickspersecond_ = *get_performance_frequency*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetPerformanceCounter[SDL_GetPerformanceCounter],
+https://wiki.libsdl.org/SDL2/SDL_GetPerformanceFrequency[SDL_GetPerformanceFrequency].#
+
+The following alternative time utilities are also available (they are consistent with the time utilities
+that can be found in other libraries of the
+https://github.com/stetre/moonlibs[MoonLibs collection]).
+
+[[now]]
+* _t_ = *now*(&nbsp;) +
+[small]#Returns the current time in seconds (float). +
+The returned time is relative to an unspecified point in the past, and unrelated to the time in milliseconds returned by _<<get_ticks, get_ticks>>(&nbsp;)_. +
+This is implemented with monotonic _clock_gettime(3)_, if available, or
+with _gettimeofday(3)_ otherwise.#
+
+[[since]]
+* _dt_ = *since*(_t_) +
+[small]#Returns the time in seconds (float) elapsed since the time _t_,
+previously obtained with _<<now, now>>(&nbsp;)_.#
+
+[[sleep]]
+* *sleep*(_seconds_) +
+[small]#Sleeps for _seconds_ (float).#
+
+[[timer]]
+=== timer
+
+[[start_timer]]
+* _timer_ = *start_timer*(_func_) +
+_timer_++:++*stop*( ) +
+[small]#_timeout_: integer (milliseconds). +
+The _func_ callback is executed at the expiration of the timer as *restart = func(timer)*. +
+If the callback returns _false_ (or _nil_), the timer is deleted, othewise it is restarted with the same _timeout_ value. +
+The _stop(&nbsp;)_ method stops and deletes the timer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_AddTimer[SDL_AddTimer].#
+

@@ -1,0 +1,159 @@
+
+[[font]]
+=== font
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/FrontPage[SDL2_ttf].#
+
+[[open_font]]
+* _font_ = *open_font*(_file_, _ptsize_, [_index_]) +
+_font_ = *open_font_dpi*(_file_, _ptsize_, _hdpi_, _vdpi_, [_index_] ) +
+_font_++:++*close*( ) +
+[small]#_file_: string (pathname), +
+_ptsize_, _hdpi_, _vdpi_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_OpenFont[TTF_OpenFont],
+https://wiki.libsdl.org/SDL2_ttf/TTF_OpenFontIndex[TTF_OpenFontIndex],
+https://wiki.libsdl.org/SDL2_ttf/TTF_OpenFontDPI[TTF_OpenFontDPI],
+https://wiki.libsdl.org/SDL2_ttf/TTF_OpenFontIndexDPI[TTF_OpenFontIndexDPI],
+https://wiki.libsdl.org/SDL2_ttf/TTF_CloseFont[TTF_CloseFont].#
+
+[[set_font_size]]
+* _font_++:++*set_size*(_ptsize_, [_hdpi_, _vdpi_]) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontSize[TTF_SetFontSize],
+https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontSizeDPI[TTF_SetFontSizeDPI].#
+
+[[set_style]]
+* _font_++:++*set_style*(<<ttfstyleflags, _ttfstyleflags_>>) +
+<<ttfstyleflags, _ttfstyleflags_>> = _font_++:++*get_style*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontStyle[TTF_SetFontStyle],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontStyle[TTF_GetFontStyle].#
+
+[[set_outline]]
+* _font_++:++*set_outline*(_integer_) +
+_integer_ = _font_++:++*get_outline*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontOutline[TTF_SetFontOutline],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontOutline[TTF_GetFontOutline].#
+
+[[set_hinting]]
+* _font_++:++*set_hinting*(<<fonthinting, _fonthinting_>>) +
+<<fonthinting, _fonthinting_>> = _font_++:++*get_hinting*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontHinting[TTF_SetFontHinting],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontHinting[TTF_GetFontHinting].#
+
+[[font_height]]
+* _integer_ = _font_++:++*height*( ) +
+_integer_ = _font_++:++*ascent*( ) +
+_integer_ = _font_++:++*descent*( ) +
+_integer_ = _font_++:++*line_skip*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_FontHeight[TTF_FontHeight],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontAscent[TTF_FontAscent],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontDescent[TTF_FontDescent],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontLineSkip[TTF_FontLineSkip].#
+
+[[set_kerning]]
+* _font_++:++*set_kerning*(_boolean_) +
+_boolean_ = _font_++:++*get_kerning*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontKerning[TTF_SetFontKerning],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontKerning[TTF_GetFontKerning].#
+
+[[font_faces]]
+* _integer_ = _font_++:++*faces*( ) +
+_boolean_ = _font_++:++*face_is_fixed_width*( ) +
+_string_ = _font_++:++*face_family_name*( ) +
+_string_ = _font_++:++*face_style_name*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_FontFaces[TTF_FontFaces],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontFaceIsFixedWidth[TTF_FontFaceIsFixedWidth],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontFaceFamilyName[TTF_FontFaceFamilyName],
+https://wiki.libsdl.org/SDL2_ttf/TTF_FontFaceStyleName[TTF_FontFaceStyleName].#
+
+[[glyph_is_provided]]
+* _boolean_ = _font_++:++*glyph_is_provided*(_ch_) +
+_minx_, _maxx_, _miny_, _maxy_, _advance_ = _font_++:++*glyph_metrics*(_ch_) +
+_integer_ = _font_++:++*get_kerning_size*(_prev_ch_, _ch_) +
+[small]#_ch_, _prev_ch_: integer (code point), +
+_minx_, _maxx_, _miny_, _maxy_, _advance_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_GlyphIsProvided32[TTF_GlyphIsProvided32],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GlyphMetrics32[TTF_GlyphMetrics32],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontKerningSizeGlyphs32[TTF_GetFontKerningSizeGlyphs32].#
+
+[[render_text]]
+* _w_, _h_ = _font_++:++*size_text*( ) +
+_extent_, _count_ = _font_++:++*measure_text*(_text_, _maxwidth_) +
+<<surface, _surface_>> = _font_++:++*render_text_shaded*(_text_, _fgcolor_, _bgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_text_lcd*(_text_, _fgcolor_, _bgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_text_solid*(_text_, _fgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_text_blended*(_text_, _fgcolor_, [_wraplen_]) +
+[small]#_text_: string, +
+_w_, _h_, extent_, _count_, _maxwidth_, _wraplen_: integer. +
+_fgcolor_, _bgcolor_: <<color, color>>, +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SizeText[TTF_SizeText],
+https://wiki.libsdl.org/SDL2_ttf/TTF_MeasureText[TTF_MeasureText],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderText_Shaded[TTF_RenderText_Shaded],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderText_LCD[TTF_RenderText_LCD],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderText_Solid[TTF_RenderText_Solid],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderText_Blended[TTF_RenderText_Blended].#
+
+[[render_utf8]]
+* _w_, _h_ = _font_++:++*size_utf8*( ) +
+_extent_, _count_ = _font_++:++*measure_utf8*(_text_, _maxwidth_) +
+<<surface, _surface_>> = _font_++:++*render_utf8_shaded*(_text_, _fgcolor_, _bgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_utf8_lcd*(_text_, _fgcolor_, _bgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_utf8_solid*(_text_, _fgcolor_, [_wraplen_]) +
+<<surface, _surface_>> = _font_++:++*render_utf8_blended*(_text_, _fgcolor_, [_wraplen_]) +
+[small]#_text_: string, +
+_w_, _h_, extent_, _count_, _maxwidth_, _wraplen_: integer. +
+_fgcolor_, _bgcolor_: <<color, color>>, +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SizeUTF8[TTF_SizeUTF8],
+https://wiki.libsdl.org/SDL2_ttf/TTF_MeasureUTF8[TTF_MeasureUTF8],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderUTF8_Shaded[TTF_RenderUTF8_Shaded],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderUTF8_LCD[TTF_RenderUTF8_LCD],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderUTF8_Solid[TTF_RenderUTF8_Solid],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderUTF8_Blended[TTF_RenderUTF8_Blended].#
+
+[[render_glyph]]
+* <<surface, _surface_>> = _font_++:++*render_glyph_shaded*(_ch_, _fgcolor_, _bgcolor_) +
+<<surface, _surface_>> = _font_++:++*render_glyph_lcd*(_ch_, _fgcolor_, _bgcolor_) +
+<<surface, _surface_>> = _font_++:++*render_glyph_solid*(_ch_, _fgcolor_) +
+<<surface, _surface_>> = _font_++:++*render_glyph_blended*(_ch_, _fgcolor_) +
+[small]#_ch_: integer (code point). +
+_fgcolor_, _bgcolor_: <<color, color>>, +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_RenderGlyph32_Shaded[TTF_RenderGlyph32_Shaded],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderGlyph32_LCD[TTF_RenderGlyph32_LCD],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderGlyph32_Solid[TTF_RenderGlyph32_Solid],
+https://wiki.libsdl.org/SDL2_ttf/TTF_RenderGlyph32_Blended[TTF_RenderGlyph32_Blended].#
+
+[[set_font_sdf]]
+* _font_++:++*set_sdf*(_boolean_) +
+_boolean_ = _font_++:++*get_sdf*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontSDF[TTF_SetFontSDF],
+https://wiki.libsdl.org/SDL2_ttf/TTF_GetFontSDF[TTF_GetFontSDF].#
+
+[[set_font_direction]]
+* _font_++:++*set_direction*(<<fontdirection, _fontdirection_>>) +
+_font_++:++*set_wrapped_align*(<<fontalign, _fontalign_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontDirection[TTF_SetFontDirection],
+https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontWrappedAlign[TTF_SetFontWrappedAlign].#
+
+
+[[set_font_script_name]]
+* _font_++:++*set_script_name*(_script_) +
+[small]#_script_: string. +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_SetFontScriptName[TTF_SetFontScriptName].#
+
+////
+££
+[[]]
+* _font_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_[TTF_].#
+
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2_ttf/TTF_[TTF_].#
+
+https://wiki.libsdl.org/SDL2_ttf/TTF_[TTF_],
+
+
+
+////
+

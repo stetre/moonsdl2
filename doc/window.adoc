@@ -1,0 +1,186 @@
+
+[[window]]
+=== window
+
+[[create_window]]
+* _window_ = *create_window*(_title_, [_x_], [_y_], _w_, _h_, [<<windowflags, _windowflags_>>]) +
+_window_ = *get_grabbed_window*( ) +
+_window_++:++*destroy*( ) +
+[small]#_title_: string, +
+_x_, _y_: integers (_nil_ is equivalent to sdl.WINDOWPOS_UNDEFINED), +
+_w_, _h_: integers. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_CreateWindow[SDL_CreateWindow],
+https://wiki.libsdl.org/SDL2/SDL_GetGrabbedWindow[SDL_GetGrabbedWindow],
+https://wiki.libsdl.org/SDL2/SDL_DestroyWindow[SDL_DestroyWindow].#
+
+
+[[get_id]]
+* _id_ = _window_++:++*get_id*( ) +
+<<windowflags, _windowflags_>> = _window_++:++*get_flags*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetWindowID[SDL_GetWindowID],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowFlags[SDL_GetWindowFlags].#
+
+[[set_title]]
+* _window_++:++*set_title*(_title_) +
+_title_ = _window_++:++*get_title*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetWindowTitle[SDL_SetWindowTitle],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowTitle[SDL_GetWindowTitle].#
+
+[[set_position]]
+* _window_++:++*set_position*(_x_, _y_) +
+_x_, _y_ = _window_++:++*get_position*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowPosition[SDL_SetWindowPosition],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowPosition[SDL_GetWindowPosition].#
+
+[[set_size]]
+* _window_++:++*set_size*(_w_, _h_) +
+_window_++:++*set_minimum_size*(_w_, _h_) +
+_window_++:++*set_maximum_size*(_w_, _h_) +
+_w_, _h_ = _window_++:++*get_size*( ) +
+_w_, _h_ = _window_++:++*get_size_in_pixels*( ) +
+_w_, _h_ = _window_++:++*get_minimum_size*( ) +
+_w_, _h_ = _window_++:++*get_maximum_size*( ) +
+_top_, _left_, _right_, _bottom_ = _window_++:++*get_borders_size*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetWindowSize[SDL_SetWindowSize],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowMinimumSize[SDL_SetWindowMinimumSize],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowMaximumSize[SDL_SetWindowMaximumSize],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowSize[SDL_GetWindowSize],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowSizeInPixels[SDL_GetWindowSizeInPixels],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowMinimumSize[SDL_GetWindowMinimumSize],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowMaximumSize[SDL_GetWindowMaximumSize],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowBordersSize[SDL_GetWindowBordersSize].#
+
+[[set_resizable]]
+* _window_++:++*set_resizable*(_boolean_) +
+_window_++:++*set_bordered*(_boolean_) +
+_window_++:++*set_always_on_top*(_boolean_) +
+_window_++:++*set_input_focus*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetWindowResizable[SDL_SetWindowResizable],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowBordered[SDL_SetWindowBordered],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowAlwaysOnTop[SDL_SetWindowAlwaysOnTop],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowInputFocus[SDL_SetWindowInputFocus].#
+
+[[show]]
+* _window_++:++*show*( ) +
+_window_++:++*hide*( ) +
+_window_++:++*raise*( ) +
+_window_++:++*maximize*( ) +
+_window_++:++*minimize*( ) +
+_window_++:++*restore*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_ShowWindow[SDL_ShowWindow],
+https://wiki.libsdl.org/SDL2/SDL_HideWindow[SDL_HideWindow],
+https://wiki.libsdl.org/SDL2/SDL_RaiseWindow[SDL_RaiseWindow],
+https://wiki.libsdl.org/SDL2/SDL_MaximizeWindow[SDL_MaximizeWindow],
+https://wiki.libsdl.org/SDL2/SDL_MinimizeWindow[SDL_MinimizeWindow],
+https://wiki.libsdl.org/SDL2/SDL_RestoreWindow[SDL_RestoreWindow].#
+
+[[set_fullscreen]]
+* _window_++:++*set_fullscreen*(_mode_) +
+[small]#_mode_: 'real', 'fake', or 'windowed'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowFullscreen[SDL_SetWindowFullscreen].#
+
+[[flash]]
+* _window_++:++*flash*(_op_) +
+[small]#_mode_: 'cancel', 'briefly', or 'until focused'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_FlashWindow[SDL_FlashWindow].#
+
+[[set_icon]]
+* _window_++:++*set_icon*(<<surface, _surface_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowIcon[SDL_SetWindowIcon].#
+
+[[set_grab]]
+* _window_++:++*set_grab*(_boolean_) +
+_window_++:++*set_keyboard_grab*(_boolean_) +
+_window_++:++*set_mouse_grab*(_boolean_) +
+_boolean_ = _window_++:++*get_grab*( ) +
+_boolean_ = _window_++:++*get_keyboard_grab*( ) +
+_boolean_ = _window_++:++*get_mouse_grab*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetWindowGrab[SDL_SetWindowGrab],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowKeyboardGrab[SDL_SetWindowKeyboardGrab],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowMouseGrab[SDL_SetWindowMouseGrab],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowGrab[SDL_GetWindowGrab],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowKeyboardGrab[SDL_GetWindowKeyboardGrab],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowMouseGrab[SDL_GetWindowMouseGrab].#
+
+[[get_surface]]
+* <<surface, _surface_>> = _window_++:++*get_surface*( ) +
+<<renderer, _renderer_ >> = _window_++:++*get_renderer*( ) +
+<<pixelformat, _pixelformat_>> = _window_++:++*get_format*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_GetWindowSurface[SDL_GetWindowSurface],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowRenderer[SDL_GetWindowRenderer],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowPixelFormat[SDL_GetWindowPixelFormat].#
+
+[[update_surface]]
+* _window_++:++*update_surface*( ) +
+_window_++:++*update_surface_rects*(_{<<rect, rect>>}_) +
+[small]#Rfr: 
+https://wiki.libsdl.org/SDL2/SDL_UpdateWindowSurface[SDL_UpdateWindowSurface],
+https://wiki.libsdl.org/SDL2/SDL_UpdateWindowSurfaceRects[SDL_UpdateWindowSurfaceRects].#
+
+[[set_brightness]]
+* _window_++:++*set_brightness*(_float_) +
+_window_++:++*set_opacity*( ) +
+_float_ = _window_++:++*get_brightness*( ) +
+_float_ = _window_++:++*get_opacity*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetWindowBrightness[SDL_SetWindowBrightness],
+https://wiki.libsdl.org/SDL2/SDL_SetWindowOpacity[SDL_SetWindowOpacity],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowBrightness[SDL_GetWindowBrightness],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowOpacity[SDL_GetWindowOpacity].#
+
+[[set_display_mode]]
+* _window_++:++*set_display_mode*([<<displaymode, _displaymode_>>]) +
+<<displaymode, _displaymode_>> = _window_++:++*get_display_mode*( ) +
+_displayindex_ = _window_++:++*get_display_index*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowDisplayMode[SDL_SetWindowDisplayMode],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowDisplayMode[SDL_GetWindowDisplayMode],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowDisplayIndex[SDL_GetWindowDisplayIndex].#
+
+[[set_mouse_rect]]
+* _window_++:++*set_mouse_rect*([<<rect, _rect_>>]) +
+<<rect, _rect_>> = _window_++:++*get_mouse_rect*( ) +
+[small]#Rfr: 
+https://wiki.libsdl.org/SDL2/SDL_SetWindowMouseRect[SDL_SetWindowMouseRect],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowMouseRect[SDL_GetWindowMouseRect].#
+
+
+[[set_hit_test]]
+* _window_++:++*set_hit_test*([_func_]) +
+[small]#The _func_ callback is executed as *result = func(window, area)* where _area_ is a <<point, point>> and the returned _result_ must be a <<hittestresult, hittestresult>> value. +
+Passing _func=nil_ disables hit-testing. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowHitTest[SDL_SetWindowHitTest].#
+
+[[set_gamma_ramp]]
+* _window_++:++*set_gamma_ramp*([_red_], [_green_], [_blue_]) +
+_red_, _green_, _blue_ = _window_++:++*get_gamma_ramp*( ) +
+[small]#_red_, _green_, _blue_: {integer}[256] (16-bit unsigned integers). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowGammaRamp[SDL_SetWindowGammaRamp],
+https://wiki.libsdl.org/SDL2/SDL_GetWindowGammaRamp[SDL_GetWindowGammaRamp].#
+
+[[set_modal_for]]
+* _window_++:++*set_modal_for*(_parent_) +
+[small]#_parent_: <<window, window>>. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetWindowModalFor[SDL_SetWindowModalFor].#
+
+////
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+
+[[]]
+* _window_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+////
+

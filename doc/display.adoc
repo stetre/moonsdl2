@@ -1,0 +1,61 @@
+
+[[display]]
+== Video display
+
+[[get_num_video_drivers]]
+* _numdrivers_ = *get_num_video_drivers*( ) +
+_name_ = *get_video_drivers*(_index_) +
+_name_ = *get_current_video_driver*( ) +
+[small]#_index_: integer (_1 .. numdrivers_), +
+_name_ = string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetNumVideoDrivers[SDL_GetNumVideoDrivers], 
+https://wiki.libsdl.org/SDL2/SDL_GetVideoDriver[SDL_GetVideoDriver], 
+https://wiki.libsdl.org/SDL2/SDL_GetCurrentVideoDriver[SDL_GetCurrentVideoDriver].#
+
+[[get_num_displays]]
+* _numdisplays_ = *get_num_displays*( ) +
+_name_ = *get_display_name*(_displayindex_) +
+[small]#_displayindex_: integer (_1 .. numdisplays_), +
+_name_ = string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetNumVideoDisplays[SDL_GetNumVideoDisplays],
+https://wiki.libsdl.org/SDL2/SDL_GetDisplayName[SDL_GetDisplayName].#
+
+[[get_display_bounds]]
+* _bounds_ = *get_display_bounds*(_displayindex_) +
+_bounds_ = *get_display_usable_bounds*(_displayindex_) +
+[small]#_bounds_: <<rect, rect>>. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetDisplayBounds[SDL_GetDisplayBounds], https://wiki.libsdl.org/SDL2/SDL_GetDisplayUsableBounds[SDL_GetDisplayUsableBounds].#
+
+[[get_display_dpi]]
+* _ddpi_, _hdpi_, _vdpi_ = *get_display_dpi*(_displayindex_) +
+[small]#_ddpi_, _hdpi_, _vdpi_ = integers. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetDisplayDPI[SDL_GetDisplayDPI].#
+
+[[get_display_orientation]]
+* <<orientation, _orientation_>> = *get_display_orientation*(_displayindex_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetDisplayOrientation[SDL_GetDisplayOrientation].#
+
+[[get_display_modes]]
+* _{<<displaymode, displaymode>>}_ = *get_display_modes*(_displayindex_) +
+<<displaymode, _displaymode_>> = *get_current_display_mode*(_displayindex_) +
+<<displaymode, _displaymode_>> = *get_closest_display_mode*(_displayindex_, <<displaymode, _displaymode_>>) +
+<<displaymode, _displaymode_>> = *get_desktop_display_mode*(_displayindex_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetDisplayMode[SDL_GetDisplayMode],
+https://wiki.libsdl.org/SDL2/SDL_GetCurrentDisplayMode[SDL_GetCurrentDisplayMode],
+https://wiki.libsdl.org/SDL2/SDL_GetClosestDisplayMode[SDL_GetClosestDisplayMode],
+https://wiki.libsdl.org/SDL2/SDL_GetDesktopDisplayMode[SDL_GetDesktopDisplayMode].#
+
+[[get_point_display_index]]
+* _displayindex_ = *get_point_display_index*(<<point, _point_>>) +
+_displayindex_ = *get_rect_display_index*(<<rect, _rect_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetPointDisplayIndex[SDL_GetPointDisplayIndex],
+https://wiki.libsdl.org/SDL2/SDL_GetRectDisplayIndex[SDL_GetRectDisplayIndex].#
+
+[[enable_screen_saver]]
+* *enable_screen_saver*( ) +
+*disable_screen_saver*( ) +
+_boolean_ = *is_screen_saver_enabled*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_EnableScreenSaver[SDL_EnableScreenSaver],
+https://wiki.libsdl.org/SDL2/SDL_DisableScreenSaver[SDL_DisableScreenSaver],
+https://wiki.libsdl.org/SDL2/SDL_IsScreenSaverEnabled[SDL_IsScreenSaverEnabled].#
+

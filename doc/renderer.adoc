@@ -1,0 +1,159 @@
+
+[[renderer]]
+=== renderer 
+
+[[create_renderer]]
+* _renderer_ = *create_renderer*(<<window, _window_>>, [_index_], [<<rendererflags, _rendererflags_>>]) +
+_renderer_ = *create_software_renderer*(<<surface, _surface_>>) +
+_renderer_++:++*destroy*( ) +
+[small]#_index_: 1-based index in the table returned by <<get_render_drivers_info, get_render_drivers_info>>, or _nil_ for the first suitable driver. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_CreateRenderer[SDL_CreateRenderer],
+https://wiki.libsdl.org/SDL2/SDL_CreateSoftwareRenderer[SDL_CreateSoftwareRenderer],
+https://wiki.libsdl.org/SDL2/SDL_DestroyRenderer[SDL_DestroyRenderer].#
+
+[[get_render_drivers_info]]
+* _{<<renderdriverinfo, renderdriverinfo>>}_ = *get_render_drivers_info*( ) +
+<<renderdriverinfo, _renderdriverinfo_>> = _renderer_++:++*get_info*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetRenderDriverInfo[SDL_GetRenderDriverInfo],
+https://wiki.libsdl.org/SDL2/SDL_GetRendererInfo[SDL_GetRendererInfo].#
+
+[[get_window]]
+* <<window, _window_>> = _renderer_++:++*get_window*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderGetWindow[SDL_RenderGetWindow].#
+
+[[set_vsync]]
+* _renderer_++:++*set_vsync*(_boolean_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderSetVSync[SDL_RenderSetVSync].#
+
+[[set_target]]
+* _renderer_++:++*set_target*([<<texture, _texture_>>]) +
+<<texture, _texture_>> | _nil_ = _renderer_++:++*get_target*( ) +
+_boolean_ = _renderer_++:++*target_supported*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetRenderTarget[SDL_SetRenderTarget],
+https://wiki.libsdl.org/SDL2/SDL_GetRenderTarget[SDL_GetRenderTarget],
+https://wiki.libsdl.org/SDL2/SDL_RenderTargetSupported[SDL_RenderTargetSupported].#
+
+[[set_logical_size]]
+* _renderer_++:++*set_logical_size*(_w_, _h_) +
+_w_, _h_ = _renderer_++:++*get_logical_size*( ) +
+_w_, _h_ = _renderer_++:++*get_output_size*( ) +
+[small]#_w_, _h_: integer. +
+Rfr:
+https://wiki.libsdl.org/SDL2/SDL_RenderSetLogicalSize[SDL_RenderSetLogicalSize],
+https://wiki.libsdl.org/SDL2/SDL_RenderGetLogicalSize[SDL_RenderGetLogicalSize],
+https://wiki.libsdl.org/SDL2/SDL_GetRendererOutputSize[SDL_GetRendererOutputSize].#
+
+[[set_scale]]
+* _renderer_++:++*set_scale*(_x_, _y_) +
+_x_, _y_ = _renderer_++:++*get_scale*( ) +
+_renderer_++:++*set_integer_scale*(_boolean_) +
+_boolean_ = _renderer_++:++*get_integer_scale*( ) +
+[small]#_x_, _y_: float. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderSetScale[SDL_RenderSetScale],
+https://wiki.libsdl.org/SDL2/SDL_RenderGetScale[SDL_RenderGetScale],
+https://wiki.libsdl.org/SDL2/SDL_RenderSetIntegerScale[SDL_RenderSetIntegerScale],
+https://wiki.libsdl.org/SDL2/SDL_RenderGetIntegerScale[SDL_RenderGetIntegerScale].#
+
+[[set_viewport]]
+* _renderer_++:++*set_viewport*([<<rect, _rect_>>]) +
+<<rect, _rect_>> = _renderer_++:++*get_viewport*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderSetViewport[SDL_RenderSetViewport],
+https://wiki.libsdl.org/SDL2/SDL_RenderGetViewport[SDL_RenderGetViewport].#
+
+
+[[renderer_set_clip_rect]]
+* _renderer_++:++*set_clip_rect*([<<rect, _rect_>>]) +
+<<rect, _rect_>> = _renderer_++:++*get_clip_rect*( ) +
+_boolean_ = _renderer_++:++*is_clip_enabled*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderSetClipRect[SDL_RenderSetClipRect],
+https://wiki.libsdl.org/SDL2/SDL_RenderGetClipRect[SDL_RenderGetClipRect],
+https://wiki.libsdl.org/SDL2/SDL_RenderIsClipEnabled[SDL_RenderIsClipEnabled].#
+
+[[window_to_logical]]
+* _logicalx_, _logicaly_ = _renderer_++:++*window_to_logical*(_windowx_, _windowy_) +
+_windowx_, _windowy_ = _renderer_++:++*logical_to_window*(_logicalx_, _logicaly_) +
+[small]#_windowx_, _windowy_: integer, +
+_logicalx_, _logicaly_: float. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderWindowToLogical[SDL_RenderWindowToLogical],
+https://wiki.libsdl.org/SDL2/SDL_RenderLogicalToWindow[SDL_RenderLogicalToWindow].#
+
+[[clear]]
+* _renderer_++:++*clear*( ) +
+_renderer_++:++*present*( ) +
+_renderer_++:++*flush*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderClear[SDL_RenderClear],
+https://wiki.libsdl.org/SDL2/SDL_RenderPresent[SDL_RenderPresent],
+https://wiki.libsdl.org/SDL2/SDL_RenderFlush[SDL_RenderFlush].#
+
+[[set_draw_color]]
+* _renderer_++:++*set_draw_color*(<<color, _color_>>) +
+<<color, _color_>> = _renderer_++:++*get_draw_color*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetRenderDrawColor[SDL_SetRenderDrawColor],
+https://wiki.libsdl.org/SDL2/SDL_GetRenderDrawColor[SDL_GetRenderDrawColor].#
+
+
+[[set_draw_blend_mode]]
+* _renderer_++:++*set_draw_blend_mode*(_mode_) +
+_mode_ = _renderer_++:++*get_draw_blend_mode*( ) +
+[small]#_mode_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetRenderDrawBlendMode[SDL_SetRenderDrawBlendMode],
+https://wiki.libsdl.org/SDL2/SDL_GetRenderDrawBlendMode[SDL_GetRenderDrawBlendMode].#
+
+[[draw_point]]
+* _renderer_++:++*draw_point*(_x_, _y_) +
+_renderer_++:++*draw_point*(<<fpoint, _fpoint_>>) +
+_renderer_++:++*draw_points*(_{<<fpoint, fpoint>>}_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderDrawPointF[SDL_RenderDrawPointF],
+https://wiki.libsdl.org/SDL2/SDL_RenderDrawPointsF[SDL_RenderDrawPointsF].#
+
+[[draw_line]]
+* _renderer_++:++*draw_line*(_x~1~_, _y~1~_, _x~2~_, _y~2~_) +
+_renderer_++:++*draw_line*(<<fpoint, _fpoint~1~_>>, <<fpoint, _fpoint~2~_>>) +
+_renderer_++:++*draw_lines*(_{<<fpoint, fpoint>>}_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderDrawLineF[SDL_RenderDrawLineF],
+https://wiki.libsdl.org/SDL2/SDL_RenderDrawLinesF[SDL_RenderDrawLinesF].#
+
+[[draw_rect]]
+* _renderer_++:++*draw_rect*(<<frect, _frect_>>) +
+_renderer_++:++*draw_rects*(_{<<frect, frect>>}_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderDrawRectF[SDL_RenderDrawRectF],
+https://wiki.libsdl.org/SDL2/SDL_RenderDrawRectsF[SDL_RenderDrawRectsF].#
+
+[[render_fill_rect]]
+* _renderer_++:++*fill_rect*([<<frect, _frect_>>]) +
+_renderer_++:++*fill_rects*(_{<<frect, frect>>}_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderFillRectF[SDL_RenderFillRectF],
+https://wiki.libsdl.org/SDL2/SDL_RenderFillRectsF[SDL_RenderFillRectsF].#
+
+[[render_copy]]
+* _renderer_++:++*copy*(<<texture, _texture_>>, [_srcrect_], [_dstrect_]) +
+_renderer_++:++*copy_ex*(<<texture, _texture_>>, [_srcrect_], [_dstrect_], [_angle_], [_center_], [<<flipflags, _flipflags_>>]) +
+[small]#_srcrect_: <<rect, rect>>, +
+_dstrect_: <<frect, frect>>, +
+_center_: <<fpoint, fpoint>>, +
+_angle_: float. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderCopyF[SDL_RenderCopyF],
+https://wiki.libsdl.org/SDL2/SDL_RenderCopyExF[SDL_RenderCopyExF].#
+
+[[renderer_read_pixels]]
+* _renderer_++:++*read_pixels*([<<rect, _rect_>>], [<<pixelformat, _pixelformat_>>], _pixels_, _pitch_) +
+[small]#_pixel_: <<memptr, memptr>> (memory area where to read to), +
+_pitch_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderReadPixels[SDL_RenderReadPixels].#
+
+[[render_geometry]]
+* _renderer_++:++*render_geometry*([<<texture, _texture_>>], _vertices_, [_indices_] ) +
+[small]#_verices_: {<<vertex, vertex>>}, +
+_indices_: {_integer_} (0-based indices). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_RenderGeometry[SDL_RenderGeometry].#
+
+////
+
+[[]]
+* _renderer_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+////
+

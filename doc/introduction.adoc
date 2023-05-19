@@ -1,0 +1,44 @@
+
+== Introduction
+
+MoonSDL2 is an almost one-to-one Lua binding library to SDL2 and its extension libraries.
+This means that by and large, it is intended to be used as described in the
+https://wiki.libsdl.org/SDL2/FrontPage[SDL2 documentation] (apart from coding in Lua, of course).
+
+Not all SDL2's APIs are exposed by MoonSDL2. In particular, the following APIs are not (or not yet) exposed: multithreading, file abstraction, shared object support, endianness handling, bit manipulation, platform-specific functionality, and standard library functionality.
+Moreover, audio functionalities are exposed only in terms of _SDL_mixer_ API bindings (audio device management and audio streams APIs are not exposed).
+
+This section gives a brief overview of the binding library, while the details are given 
+in the sections that follow.
+
+MoonSDL2 binds SDL2 *objects* (_window_, _renderer_, etc.) to Lua userdata, which are 
+returned by the creating functions (_sdl.create_window_(&nbsp;), _sdl.create_renderer_(&nbsp;), etc) and are then used to refer to objects in Lua in the same way as one would use SDL2 handles in C.
+
+As a general (but loose) rule, SDL2 functions are bound to MoonSDL2 functions or methods
+whose names are https://en.wikipedia.org/wiki/Snake_case[snake_case] versions of the original one.
+
+The functions related to an object type - with the exception of the creating function - are usually
+bounded to methods of that object (e.g. the C function _SDL_SetWindowTitle(window, ...)_ becomes the method _window:set_title(...)_ in Lua.
+
+Objects are *garbage collected at exit* (which includes on error), and automatically
+deleted at the SDL2 level, so there is no need to explicitly invoke their release methods (_free_(&nbsp;), or whatever else) at exit for cleanup. 
+
+Apart from at exit, however, objects are not automatically garbage collected 
+footnote:[Objects are anchored to the Lua registry at their creation, so even if the script does not
+have references to an object, a reference always exists on the registry and this prevents the 
+GC to collect it.]
+and one must release them explicitly when needed, e.g. to release resources when the
+application is not exiting and some objects are no longer needed.
+
+Releasing an object causes the automatic (pre) destruction of all its children
+objects, and the invalidation of any reference to the object and to its children.
+footnote:[It is good practice to not leave invalid references to objects around, because
+they prevent the GC to collect the memory associated with the userdata.]
+
+SDL2 0-based indices are usually translated to 1-based indices in MoonSDL2.
+
+If not stated otherwise, *on error* all MoonSDL2 functions raise a 
+http://www.lua.org/manual/5.3/manual.html#lua_error[Lua error]. 
+If needed, this behaviour can be overridden by wrapping function calls in the standard Lua 
+http://www.lua.org/manual/5.3/manual.html#pdf-pcall[pcall](&nbsp;).
+

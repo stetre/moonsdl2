@@ -1,0 +1,65 @@
+= MoonSDL2 Reference Manual
+Stefano Trettel
+v0.1, 2023-05-19
+:toc: left
+:toclevels: 3
+:stylesdir: ./
+:stylesheet: colony.css
+:source-highlighter: pygments
+:pygments-style: autumn
+:source-language: lua
+:exampledir: ../examples
+
+image::powered-by-lua.gif[Lua logo, link=http://www.lua.org]
+
+// Macros for trees: {tS} = "   ", {tI} = "│  ", {tH} = "├─ ", {tL} = "└─ "
+:tS: &#8192;&#8192;&#8192;&#8192;
+:tI: &#9474;&#8192;&#8192;&#8192;
+:tH: &#9500;&#9472;&#8192;
+:tL: &#9492;&#9472;&#8192;
+
+include::preface.adoc[]
+include::introduction.adoc[]
+
+include::initialization.adoc[]
+
+include::display.adoc[]
+include::window.adoc[]
+include::glcontext.adoc[]
+
+[[rendering]]
+== Rendering (2D)
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryRender[2D Accelerated Rendering].#
+
+include::surface.adoc[]
+include::renderer.adoc[]
+include::texture.adoc[]
+include::animation.adoc[]
+include::pxlfmt.adoc[]
+include::font.adoc[]
+
+include::eventhandling.adoc[]
+
+[[input]]
+== Input devices
+
+include::keyboard.adoc[]
+include::mouse.adoc[]
+include::cursor.adoc[]
+include::joystick.adoc[]
+include::gamecontroller.adoc[]
+include::haptic.adoc[]
+include::touch.adoc[]
+include::sensor.adoc[]
+
+include::mixer.adoc[]
+
+include::time.adoc[]
+
+include::misc.adoc[]
+
+include::datatypes.adoc[]
+include::enums.adoc[]
+include::flags.adoc[]
+

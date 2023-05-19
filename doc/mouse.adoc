@@ -1,0 +1,32 @@
+
+[[mouse]]
+=== mouse
+
+[[get_mouse_focus]]
+* <<window, window>> | _nil_ = *get_mouse_focus*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetMouseFocus[SDL_GetMouseFocus].#
+
+[[capture_mouse]]
+* *capture_mouse*(_boolean_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_CaptureMouse[SDL_CaptureMouse].#
+
+[[get_mouse_state]]
+* _x_, _y_, <<mousebuttonstate, _mousebuttonstate_>> = *get_mouse_state*( ) +
+_x_, _y_, <<mousebuttonstate, _mousebuttonstate_>> = *get_global_mouse_state*( ) +
+_x_, _y_, <<mousebuttonstate, _mousebuttonstate_>> = *get_relative_mouse_state*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetMouseState[SDL_GetMouseState],
+https://wiki.libsdl.org/SDL2/SDL_GetGlobalMouseState[SDL_GetGlobalMouseState],
+https://wiki.libsdl.org/SDL2/SDL_GetRelativeMouseState[SDL_GetRelativeMouseState].#
+
+[[set_relative_mouse_mode]]
+* *set_relative_mouse_mode*(_boolean_) +
+_boolean_ = *get_relative_mouse_mode*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetRelativeMouseMode[SDL_SetRelativeMouseMode],
+https://wiki.libsdl.org/SDL2/SDL_GetRelativeMouseMode[SDL_GetRelativeMouseMode].#
+
+[[warp_mouse_global]]
+* *warp_mouse_global*(_x_, _y_) +
+*warp_mouse_in_window*(<<window, _window_>>, _x_, _y_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_WarpMouseGlobal[SDL_WarpMouseGlobal],
+https://wiki.libsdl.org/SDL2/SDL_WarpMouseInWindow[SDL_WarpMouseInWindow].#
+

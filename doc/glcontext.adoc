@@ -1,0 +1,73 @@
+
+[[glcontext]]
+=== glcontext
+
+[[gl_create_context]]
+* _glcontext_ = *gl_create_context*(_<<window, window>>_) +
+_glcontext_++:++*delete*( ) +
+_glcontext_++:++*make_current*([_<<window, window>>_]) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_GL_CreateContext[SDL_GL_CreateContext],
+https://wiki.libsdl.org/SDL2/SDL_GL_DeleteContext[SDL_GL_DeleteContext],
+https://wiki.libsdl.org/SDL2/SDL_GL_MakeCurrent[SDL_GL_MakeCurrent].#
+
+[[gl_extension_supported]]
+* _boolean_ = *gl_extension_supported*(_extension_) +
+[small]#_extension_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GL_ExtensionSupported[SDL_GL_ExtensionSupported].#
+
+[[gl_set_attribute]]
+* *gl_set_attribute*(<<glattr, _glattr_>>, _value_) +
+*gl_set_boolean_attribute*(<<glattr, _glattr_>>, _boolean_) +
+*gl_set_context_version*(_major_, _minor_, <<glprofile, _glprofile_>>) +
+*gl_set_context_flags*(<<glcontextflags, _glcontextflags_>>) +
+_value_ = *gl_get_attribute*(<<glattr, _glattr_>>) +
+_boolean_ = *gl_get_boolean_attribute*(<<glattr, _glattr_>>) +
+_major_, _minor_, <<glprofile, _glprofile_>> = *gl_get_context_version*( ) +
+<<glcontextflags, _glcontextflags_>> = *gl_get_context_flags*( ) +
+*gl_reset_attributes*( ) +
+[small]#_value_, _major_, _minor_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GL_SetAttribute[SDL_GL_SetAttribute],
+https://wiki.libsdl.org/SDL2/SDL_GL_GetAttribute[SDL_GL_GetAttribute],
+https://wiki.libsdl.org/SDL2/SDL_GL_ResetAttributes[SDL_GL_ResetAttributes].#
+
+[[gl_get_current_window]]
+* <<window, _window_>> = *gl_get_current_window*( ) +
+<<glcontext, _glcontext_>> = *gl_get_current_context*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_GL_GetCurrentWindow[SDL_GL_GetCurrentWindow],
+https://wiki.libsdl.org/SDL2/SDL_GL_GetCurrentContext[SDL_GL_GetCurrentContext].#
+
+[[gl_swap_window]]
+* *gl_swap_window*(<<window, _window_>>) +
+_window_++:++*gl_swap*( ) +
+*gl_set_swap_interval*(<<swapinterval, _swapinterval_>>) +
+<<swapinterval, _swapinterval_>> = *gl_get_swap_interval*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GL_SwapWindow[SDL_GL_SwapWindow],
+https://wiki.libsdl.org/SDL2/SDL_GL_SetSwapInterval[SDL_GL_SetSwapInterval],
+https://wiki.libsdl.org/SDL2/SDL_GL_GetSwapInterval[SDL_GL_GetSwapInterval].#
+
+[[gl_get_drawable_size]]
+* _w_, _h_ = *gl_get_drawable_size*(<<window, _window_>>) +
+_w_, _h_ = _window_++:++*gl_get_drawable_size*( ) +
+[small]#_w_, _h_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GL_GetDrawableSize[SDL_GL_GetDrawableSize].#
+
+
+////
+
+[[]]
+* _glcontext_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+
+
+////
+

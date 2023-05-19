@@ -1,0 +1,185 @@
+
+[[gamecontroller]]
+=== gamecontroller
+
+
+[[gamecontroller_open]]
+* _gamecontroller_ = *gamecontroller_open*(_joystickindex_) +
+_boolean_ = *is_gamecontroller*(_joystickindex_) +
+_gamecontroller_++:++*close*( ) +
+[small]#_joystickindex_: (_1 .. <<joystick_open, numjoysticks>>_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerOpen[SDL_GameControllerOpen],
+https://wiki.libsdl.org/SDL2/SDL_IsGameController[SDL_IsGameController],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerClose[SDL_GameControllerClose].#
+
+
+[[gamecontroller_from_id]]
+* _gamecontroller_ = *gamecontroller_from_id*(_joystickindex_) +
+_gamecontroller_ = *gamecontroller_from_player_index*(_joystickindex_) +
+[small]#_joystickindex_: (_1 .. <<joystick_open, numjoysticks>>_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerFromInstanceID[SDL_GameControllerFromInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerFromPlayerIndex[SDL_GameControllerFromPlayerIndex].#
+
+
+[[gamecontroller_name]]
+* _string_ = *gamecontroller_name*(_joystickindex_) +
+<<controllertype, _controllertype_>> = *gamecontroller_type*(_joystickindex_) +
+_string_ = *gamecontroller_path*(_joystickindex_) +
+_string_ = _gamecontroller_++:++*gamecontroller_mapping*(_joystickindex_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerNameForIndex[SDL_GameControllerNameForIndex],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerTypeForIndex[SDL_GameControllerTypeForIndex],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerPathForIndex[SDL_GameControllerPathForIndex],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerMappingForDeviceIndex[SDL_GameControllerMappingForDeviceIndex].#
+
+[[gamecontroller_methods]]
+* _string_ = _gamecontroller_++:++*get_name*( ) +
+<<joystickguid, _joystickguid_>> = _gamecontroller_++:++*get_guid*( ) +
+_integer_ = _gamecontroller_++:++*get_vendor*( ) +
+_integer_ = _gamecontroller_++:++*get_product*( ) +
+_integer_ = _gamecontroller_++:++*get_product_version*( ) +
+_string_ = _gamecontroller_++:++*get_serial*( ) +
+_integer_ = _gamecontroller_++:++*get_firmware_version*( ) +
+<<controllertype, _controllertype_>> = _gamecontroller_++:++*get_type*( ) +
+_id_ = _gamecontroller_++:++*get_id*( ) +
+_string_ = _gamecontroller_++:++*get_path*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerName[SDL_GameControllerName],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetGUID[SDL_JoystickGetGUID],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetVendor[SDL_GameControllerGetVendor],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetProduct[SDL_GameControllerGetProduct],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetProductVersion[SDL_GameControllerGetProductVersion],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetSerial[SDL_GameControllerGetSerial],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetFirmwareVersion[SDL_GameControllerGetFirmwareVersion],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetType[SDL_GameControllerGetType],
+https://wiki.libsdl.org/SDL2/SDL_JoystickInstanceID[SDL_JoystickInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerPath[SDL_GameControllerPath].#
+
+
+[[set_gamecontroller_player_index]]
+* _gamecontroller_++:++*set_player_index*([_integer_]) +
+_integer_ = _gamecontroller_++:++*get_player_index*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerSetPlayerIndex[SDL_GameControllerSetPlayerIndex],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetPlayerIndex[SDL_GameControllerGetPlayerIndex].#
+
+
+
+
+[[gamecontroller_event_state]]
+* *gamecontroller_event_enable*( ) +
+*gamecontroller_event_disable*( ) +
+_state_ = *gamecontroller_event_state*( ) +
+*gamecontroller_update*( ) +
+[small]#_state_: '_enabled_' or '_disabled_'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerEventState[SDL_GameControllerEventState],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerUpdate[SDL_GameControllerUpdate].#
+
+[[gamecontroller_rumble]]
+* _gamecontroller_++:++*rumble*(_lowfreq_, _highfreq_, _durms_) +
+_gamecontroller_++:++*rumble_triggers*(_left_, _right_, _durms_) +
+_boolean_ = _gamecontroller_++:++*has_rumble*( ) +
+_boolean_ = _gamecontroller_++:++*has_rumble_triggers*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerRumble[SDL_GameControllerRumble],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerRumbleTriggers[SDL_GameControllerRumbleTriggers],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerHasRumble[SDL_GameControllerHasRumble],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerHasRumbleTriggers[SDL_GameControllerHasRumbleTriggers].#
+
+[[gamecontroller_is_haptic]]
+* _boolean = _gamecontroller_++:++*is_haptic*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickIsHaptic[SDL_JoystickIsHaptic].#
+
+
+[[gamecontroller_led]]
+* _gamecontroller_++:++*set_led*(_r_, _g_, _b_) +
+_boolean_ = _gamecontroller_++:++*has_led*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerSetLED[SDL_GameControllerSetLED],
+https://wiki.libsdl.org/SDL2/SDL_[SDL_GameControllerHasLED].#
+
+[[gamecontroller_get_attached]]
+* _boolean_ = _gamecontroller_++:++*get_attached*( ) +
+[small]#_boolean_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerGetAttached[SDL_GameControllerGetAttached].#
+
+[[gamecontroller_joystick]]
+* <<joystick, _joystick_>> = _gamecontroller_++:++*get_joystick*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerJoystick[SDL_GameControllerJoystick].#
+
+[[gamecontroller_mapping]]
+* _string_ = _gamecontroller_++:++*get_mapping*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerMapping[SDL_GameControllerMapping].#
+
+
+[[gamecontroller_axis]]
+* _boolean_ = _gamecontroller_++:++*has_axis*(<<controlleraxis, _controlleraxis_>>) +
+_integer_ = _gamecontroller_++:++*get_axis*(<<controlleraxis, _controlleraxis_>>) +
+<<controllerbuttonbind, _controllerbuttonbind_>> = _gamecontroller_++:++*get_bind_for_axis*(<<controlleraxis, _controlleraxis_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerHasAxis[SDL_GameControllerHasAxis],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetAxis[SDL_GameControllerGetAxis],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetBindForAxis[SDL_GameControllerGetBindForAxis].#
+
+[[gamecontroller_button]]
+* _boolean_ = _gamecontroller_++:++*has_button*(<<controllerbutton, _controllerbutton_>>) +
+<<keystate, _keystate_>> = _gamecontroller_++:++*get_button*(<<controllerbutton, _controllerbutton_>>) +
+<<controllerbuttonbind, _controllerbuttonbind_>> = _gamecontroller_++:++*get_bind_for_button*(<<controllerbutton, _controllerbutton_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerHasButton[SDL_GameControllerHasButton],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetButton[SDL_GameControllerGetButton],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetBindForButton[SDL_GameControllerGetBindForButton].#
+
+[[gamecontroller_touchpads]]
+* _numtouchpads_ = _gamecontroller_++:++*get_num_touchpads*( ) +
+_numfingers_ = _gamecontroller_++:++*get_num_touchpad_fingers*(_touchpad_) +
+<<keystate, _keystate_>>, _x_, _y_, _pressure_ = _gamecontroller_++:++*get_touchpad_finger*(_touchpad_, _finger_) +
+[small]#_touchpad_: integer (_1 .. numtouchpads_), +
+_finger_: integer (_1 .. numfingers_), +
+_x_, _y_, _pressure_: float. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerGetNumTouchpads[SDL_GameControllerGetNumTouchpads],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetNumTouchpadFingers[SDL_GameControllerGetNumTouchpadFingers],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetTouchpadFinger[SDL_GameControllerGetTouchpadFinger].#
+
+
+[[gamecontroller_sensor]]
+* _boolean_ = _gamecontroller_++:++*has_sensor*(<<sensortype, _sensortype_>>) +
+_gamecontroller_++:++*set_sensor_enabled*(<<sensortype, _sensortype_>>, _boolean_) +
+_boolean_ = _gamecontroller_++:++*is_sensor_enabled*(<<sensortype, _sensortype_>>) +
+_float_ = _gamecontroller_++:++*get_sensor_data_rate*(<<sensortype, _sensortype_>>) +
+_data_, _timestamps_ = _gamecontroller_++:++*get_sensor_data*(<<sensortype, _sensortype_>>, _numvalues_) +
+[small]#_numvalues_: integer, +
+_data_: {float}[_numvalues_], +
+_timestamps_ : {integer}[_numvalues_]. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerHasSensor[SDL_GameControllerHasSensor],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerSetSensorEnabled[SDL_GameControllerSetSensorEnabled],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerIsSensorEnabled[SDL_GameControllerIsSensorEnabled],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetSensorDataRate[SDL_GameControllerGetSensorDataRate],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerGetSensorData[SDL_GameControllerGetSensorData].#
+
+
+[[gamecontroller_add_mapping]]
+* _nummappings_ = *gamecontroller_num_mappings*( ) +
+_string_ = *gamecontroller_mapping_for_index*(_mapindex_) +
+_string_ = *gamecontroller_mapping_for_guid*(<<joystickguid, _joystickguid_>>) +
+_rc_ = *gamecontroller_add_mapping*(_string_) +
+_n_ = *gamecontroller_add_mappings_from_file*(_file_) +
+[small]#_mapindex_: integer (_1 .. nummappings_), +
+_rc_ = '_added_' or '_updated_', + 
+_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerNumMappings[SDL_GameControllerNumMappings],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerMappingForIndex[SDL_GameControllerMappingForIndex],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerMappingForGUID[SDL_GameControllerMappingForGUID],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerAddMapping[SDL_GameControllerAddMapping],
+https://wiki.libsdl.org/SDL2/SDL_GameControllerAddMappingsFromFile[SDL_GameControllerAddMappingsFromFile].#
+
+
+////
+[[gamecontroller_send_effect]]
+* _gamecontroller_++:++*send_effect*(@@) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GameControllerSendEffect[SDL_GameControllerSendEffect].#
+////
+
+////
+
+[[]]
+* _gamecontroller_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GameController[SDL_].#
+
+
+////
+

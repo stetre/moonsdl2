@@ -1,0 +1,32 @@
+
+[[cursor]]
+=== cursor
+
+[[create_cursor]]
+* _cursor_ = *create_cursor*(_data_, _mask_, _w_, _h_, _hot~x~_, _hot~y~_) +
+_cursor_ = *create_color_cursor*(<<surface, _surface_>>, _hot~x~_, _hot~y~_) +
+_cursor_ = *create_system_cursor*(<<systemcursor, _systemcursor_>>) +
+_cursor_++:++*free*( ) +
+[small]#_data_, _mask_: <<memptr, memptr>>, +
+_w_, _h_, _hot~x~_, _hot~y~_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_CreateCursor[SDL_CreateCursor],
+https://wiki.libsdl.org/SDL2/SDL_CreateColorCursor[SDL_CreateColorCursor],
+https://wiki.libsdl.org/SDL2/SDL_CreateSystemCursor[SDL_CreateSystemCursor].#
+
+[[set_cursor]]
+* *set_cursor*([<<cursor, _cursor_>>]) +
+<<cursor, _cursor_>> | _nil_ = *get_cursor*( ) +
+<<cursor, _cursor_>> | _nil_ = *get_default_cursor*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetCursor[SDL_SetCursor],
+https://wiki.libsdl.org/SDL2/SDL_GetCursor[SDL_GetCursor],
+https://wiki.libsdl.org/SDL2/SDL_GetDefaultCursor[SDL_GetDefaultCursor].#
+
+[[show_cursor]]
+* *show_cursor*( ) +
+*hide_cursor*( ) +
+_state_ = *cursor_state*( ) +
+[small]#_state_: '_shown_' or '_hidden_'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_ShowCursor[SDL_ShowCursor],
+https://wiki.libsdl.org/SDL2/SDL_HideCursor[SDL_HideCursor],
+https://wiki.libsdl.org/SDL2/SDL_CursorState[SDL_CursorState].#
+

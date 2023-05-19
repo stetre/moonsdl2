@@ -1,0 +1,86 @@
+
+[[pxlfmt]]
+=== pixel format
+
+
+Note that _pxlfmt_ (an object) corresponds to
+https://wiki.libsdl.org/SDL2/SDL_PixelFormat[SDL_PixelFormat], 
+whereas <<pixelformat, _pixelformat_>> (an enum) corresponds to
+https://wiki.libsdl.org/SDL2/SDL_PixelFormatEnum[SDL_PixelFormatEnum].
+
+
+[[alloc_pxlfmt]]
+* _pxlfmt_++:++*alloc_pxlfmt*(<<pixelformat, _pixelformat_>>) +
+_pxlfmt_++:++*free*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_AllocFormat[SDL_AllocFormat],
+https://wiki.libsdl.org/SDL2/SDL_FreeFormat[SDL_FreeFormat].#
+
+[[map_rgb]]
+* <<pixelformat, _pixelformat_>> = _pxlfmt_++:++*get_format*( ) +
+_pixel_ = _pxlfmt_++:++*map_rgb*(_r_, _g_, _b_) +
+_pixel_ = _pxlfmt_++:++*map_rgba*(_r_, _g_, _b_, _a_) +
+_r_, _g_, _b_ = _pxlfmt_++:++*get_rgb*(_pixel_) +
+_r_, _g_, _b_, _a_ = _pxlfmt_++:++*get_rgba*(_pixel_) +
+[small]#_pixel_ = integer, +
+_r_, _g_, _b_, _a_: integer (_0 .. 255_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_MapRGB[SDL_MapRGB],
+https://wiki.libsdl.org/SDL2/SDL_MapRGBA[SDL_MapRGBA],
+https://wiki.libsdl.org/SDL2/SDL_GetRGB[SDL_GetRGB],
+https://wiki.libsdl.org/SDL2/SDL_GetRGBA[SDL_GetRGBA].#
+
+[[bits_per_pixel]]
+* _nbits_ = _pxlfmt_++:++*bits_per_pixel*( ) +
+_nbytes_ = _pxlfmt_++:++*bytes_per_pixel*( ) +
+_nbits_ = *bits_per_pixel*(<<pixelformat, _pixelformat_>>) +
+_nbytes_ = *bytes_per_pixel*(<<pixelformat, _pixelformat_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_PixelFormat[SDL_PixelFormat].#
+
+[[pixel_format_palette]]
+* _pxlfmt_++:++*set_palette*(<<palette, _palette_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetPixelFormatPalette[SDL_SetPixelFormatPalette].#
+
+
+[[palette]]
+=== palette
+
+[[alloc_palette]]
+* _palette_ = *alloc_palette*(_ncolors_) +
+_palette_++:++*free*( ) +
+[small]#_ncolors_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_AllocPalette[SDL_AllocPalette].#
+
+[[palette_set_colors]]
+* _palette_++:++*set_colors*(_{<<color, color>>}_, _firstcolor_) +
+_{<<color, color>>}_ = _palette_++:++*get_colors*( ) +
+_ncolors_ = _palette_++:++*ncolors*( ) +
+[small]#_ncolors_, _firstcolor_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetPaletteColors[SDL_SetPaletteColors],
+https://wiki.libsdl.org/SDL2/SDL_GetPaletteColors[SDL_GetPaletteColors].#
+
+////
+££
+[[]]
+* _pxlfmt_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+@@TODO
+		{ "calculate_gamma_ramp", CalculateGammaRamp},
+		{ "get_pixel_format_value", GetPixelFormatValue},
+		{ "is_pixel_format_indexed", ISPIXELFORMAT_INDEXED},
+		{ "is_pixel_format_packed", ISPIXELFORMAT_PACKED},
+		{ "is_pixel_format_array",  ISPIXELFORMAT_ARRAY},
+		{ "is_pixel_format_alpha", ISPIXELFORMAT_ALPHA},
+		{ "is_pixel_format_fourcc", ISPIXELFORMAT_FOURCC},
+		{ "pixel_format_enum_to_masks", PixelFormatEnumToMasks},
+		{ "masks_to_pixel_format_enum", MasksToPixelFormatEnum},
+		{ "pixel_format_type", PixelFormatType},
+
+////
+

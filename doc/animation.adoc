@@ -1,0 +1,30 @@
+
+[[animation]]
+=== animation
+
+[[load_animation]]
+* _animation_ = *load_animation*(_file_) +
+_animation_++:++*free*( ) +
+[small]#_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2_image/IMG_LoadAnimation[IMG_LoadAnimation],
+https://wiki.libsdl.org/SDL2_image/IMG_FreeAnimation[IMG_FreeAnimation].#
+
+[[animation_methods]]
+* _w_, _h_ = _animation_++:++*get_size*( ) +
+_numframes_ = _animation_++:++*get_count*( ) +
+_frames_ = _animation_++:++*get_frames*( ) +
+_delays_ = _animation_++:++*get_delays*( ) +
+[small]#_w_, _h_, _numframes_: integer. +
+_frames_: {<<surface, surface>>}[_numframes_], +
+_delays_: {integer}[_numframes_], (milliseconds). +
+Rfr: https://wiki.libsdl.org/SDL2_image/IMG_Animation[IMG_Animation].#
+
+////
+££
+[[]]
+* _animation_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2_image/IMG_[IMG_].#
+
+////
+

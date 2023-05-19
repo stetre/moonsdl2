@@ -1,0 +1,27 @@
+
+[[eventhandling]]
+== Event handling
+
+[[poll_event]]
+* <<event, _event_>> | _nil_ = *poll_event*( ) +
+<<event, _event_>> = *wait_event*( ) +
+<<event, _event_>> | _nil_ = *wait_event_timeout*(_timeout_) +
+[small]#_timeout_: integer (milliseconds). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_PollEvent[SDL_PollEvent],
+https://wiki.libsdl.org/SDL2/SDL_WaitEvent[SDL_WaitEvent],
+https://wiki.libsdl.org/SDL2/SDL_WaitEventTimeout[SDL_WaitEventTimeout].#
+
+[[push_user_event]]
+* *push_user_event*(_code_, [_data_]) +
+[small]#_code_: integer (int32_t), +
+_data_: any Lua value (or _nil_). +
+When its time come, the event will be dispatched to the user as a <<userevent, userevent>>. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_PushEvent[SDL_PushEvent].#
+
+[[enable_event]]
+* *enable_event*(<<eventtype, _eventtype_>>) +
+*disable_event*(<<eventtype, _eventtype_>>) +
+_state_ = *get_event_state*(<<eventtype, _eventtype_>>) +
+[small]#_state_: 'enabled' or 'disabled'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_EventState[SDL_EventState].#
+

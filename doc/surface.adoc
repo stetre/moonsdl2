@@ -1,0 +1,138 @@
+
+[[surface]]
+=== surface
+
+[[create_surface]]
+* _surface_ = *create_rgb_surface*(_width_, _height_, _depth_, [_rmask_, _gmask_, _bmask_, _amask_]) +
+_surface_ = *create_rgb_surface*(_width_, _height_, _depth_, <<pixelformat, _pixelformat_>>) +
+_surface_ = *load_bmp*(_file_) +
+_surface_ = *load_image*(_file_) +
+_surface_++:++*free*( ) +
+[small]#_width_, _height_, _depth_, _rmask_, _gmask_, _bmask_, _amask_: integer, +
+_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_CreateRGBSurface[SDL_CreateRGBSurface],
+https://wiki.libsdl.org/SDL2/SDL_CreateRGBSurfaceWithFormat[SDL_CreateRGBSurfaceWithFormat],
+https://wiki.libsdl.org/SDL2/SDL_LoadBMP[SDL_LoadBMP],
+https://wiki.libsdl.org/SDL2_image/IMG_Load[IMG_Load],
+https://wiki.libsdl.org/SDL2/SDL_FreeSurface[SDL_FreeSurface].#
+
+[[duplicate]]
+* _surface_ = _surface_++:++*duplicate*( ) +
+_surface_ = _surface_++:++*convert*(<<pxlfmt, _pxlfmt_>>) +
+_surface_ = _surface_++:++*convert*(<<pixelformat, _pixelformat_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_DuplicateSurface[SDL_DuplicateSurface],
+https://wiki.libsdl.org/SDL2/SDL_ConvertSurface[SDL_ConvertSurface],
+https://wiki.libsdl.org/SDL2/SDL_ConvertSurfaceFormat[SDL_ConvertSurfaceFormat].#
+
+[[save_bmp]]
+* _surface_++:++*save_bmp*(_file_) +
+_surface_++:++*save_png*(_file_) +
+_surface_++:++*save_jpg*(_file_, _quality_) +
+[small]#_file_: string (pathname), +
+_quality_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SaveBMP[SDL_SaveBMP],
+https://wiki.libsdl.org/SDL2_image/IMG_SavePNG[IMG_SavePNG],
+https://wiki.libsdl.org/SDL2_image/IMG_SaveJPG[IMG_SaveJPG].#
+
+[[get_format]]
+* <<pxlfmt, _pxlfmt_>> = _surface_++:++*get_pxlfmt*( ) +
+<<pixelformat, _pixelformat_>> = _surface_++:++*get_format*( ) +
+_w_, _h_, _pitch_ = _surface_++:++*get_size*( ) +
+[small]#_w_, _h_, _pitch_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetFormat[SDL_GetFormat]
+https://wiki.libsdl.org/SDL2/SDL_Surface[SDL_Surface].#
+
+[[set_palette]]
+* _surface_++:++*set_palette*(<<palette, _palette_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetSurfacePalette[SDL_SetSurfacePalette].#
+
+[[lock]]
+* _surface_++:++*lock*( ) +
+_surface_++:++*unlock*( ) +
+_boolean_ = _surface_++:++*must_lock*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_LockSurface[SDL_LockSurface],
+https://wiki.libsdl.org/SDL2/SDL_UnlockSurface[SDL_UnlockSurface],
+https://wiki.libsdl.org/SDL2/SDL_MUSTLOCK[SDL_MUSTLOCK].#
+
+[[set_rle]]
+* _surface_++:++*set_rle*(_boolean_) +
+_boolean_ = _surface_++:++*has_rle*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetSurfaceRLE[SDL_SetSurfaceRLE],
+https://wiki.libsdl.org/SDL2/SDL_HasSurfaceRLE[SDL_HasSurfaceRLE].#
+
+[[set_color_key]]
+* _surface_++:++*set_color_key*([_key_]) +
+_key_ = _surface_++:++*get_color_key*( ) +
+_boolean_ = _surface_++:++*has_color_key*( ) +
+[small]#_key_: integer (or _nil_ to disable). +
+Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetColorKey[SDL_SetColorKey],
+https://wiki.libsdl.org/SDL2/SDL_GetColorKey[SDL_GetColorKey],
+https://wiki.libsdl.org/SDL2/SDL_HasColorKey[SDL_HasColorKey].#
+
+
+[[set_color_mod]]
+* _surface_++:++*set_color_mod*(_r_, _g_, _b_) +
+_surface_++:++*set_alpha_mod*(_a_) +
+_r_, _g_, _b_ = _surface_++:++*get_color_mod*( ) +
+_a_, = _surface_++:++*get_alpha_mod*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetSurfaceColorMod[SDL_SetSurfaceColorMod],
+https://wiki.libsdl.org/SDL2/SDL_SetSurfaceAlphaMod[SDL_SetSurfaceAlphaMod],
+https://wiki.libsdl.org/SDL2/SDL_GetSurfaceColorMod[SDL_GetSurfaceColorMod],
+https://wiki.libsdl.org/SDL2/SDL_GetSurfaceAlphaMod[SDL_GetSurfaceAlphaMod].#
+
+
+[[set_blend_mode]]
+* _surface_++:++*set_blend_mode*(_mode_) +
+_mode_ = _surface_++:++*get_blend_mode*( ) +
+[small]#_mode_: integer. +
+Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetSurfaceBlendMode[SDL_SetSurfaceBlendMode],
+https://wiki.libsdl.org/SDL2/SDL_GetSurfaceBlendMode[SDL_GetSurfaceBlendMode].#
+
+[[set_clip_rect]]
+* _surface_++:++*set_clip_rect*([<<rect, _rect_>>]) +
+<<rect, _rect_>> = _surface_++:++*get_clip_rect*( ) +
+[small]#Rfr:
+https://wiki.libsdl.org/SDL2/SDL_SetClipRect[SDL_SetClipRect],
+https://wiki.libsdl.org/SDL2/SDL_GetClipRect[SDL_GetClipRect].#
+
+[[fill_rect]]
+* _surface_++:++*fill_rect*([<<rect, _rect_>>], <<color, _color_>>) +
+_surface_++:++*fill_rects*(_{<<rect, rect>>}_, <<color, _color_>> ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_FillRect[SDL_FillRect],
+https://wiki.libsdl.org/SDL2/SDL_FillRects[SDL_FillRects].#
+
+[[blit]]
+* _surface_++:++*blit*(_dst_, [_srcrect_], [_dstrect_]) +
+_surface_++:++*blit_scaled*(_dst_, [_srcrect_], [_dstrect_]) +
+_surface_++:++*soft_stretch*(_dst_, [_srcrect_], [_dstrect_]) +
+_surface_++:++*soft_stretch_linear*(_dst_, [_srcrect_], [_dstrect_]) +
+[small]#_dst_: <<surface, surface>>, +
+_srcrect_, _dstrect_: <<rect, rect>>. +
+Rfr:
+https://wiki.libsdl.org/SDL2/SDL_BlitSurface[SDL_BlitSurface],
+https://wiki.libsdl.org/SDL2/SDL_BlitScaled[SDL_BlitScaled],
+https://wiki.libsdl.org/SDL2/SDL_SoftStretch[SDL_SoftStretch],
+https://wiki.libsdl.org/SDL2/SDL_SoftStretchLinear[SDL_SoftStretchLinear].#
+
+////
+
+[[]]
+* _surface_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/SDL_[SDL_],
+@@TODO
+		{ "create_rgb_surface_from", CreateRGBSurfaceFrom},
+		{ "create_rgb_surface_with_format_from", CreateRGBSurfaceWithFormatFrom},
+
+////
+

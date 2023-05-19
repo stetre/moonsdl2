@@ -1,0 +1,200 @@
+
+[[enums]]
+== Enums
+
+SDL2 enums are mapped in MoonSDL2 to sets of string literals (as is customary in Lua).
+For example, the C enum https://wiki.libsdl.org/SDL2/SDL_LogPriority_[_SDL_LogPriority_] is mapped to the Lua enum type <<logpriority, logpriority>>,
+
+and the C value SDL_LOG_PRIORITY_XXX is mapped to the string literal 'xxx' (lowercase version of the XXX part of the C value name, with underscores replaced by spaces).
+
+If needed, the following function can be used to obtain the list of literals admitted by 
+a particular enum type:
+
+[[sdl.enum]]
+* {_literal_} = *sdl.enum*(_enumtype_) +
+[small]#Returns a table listing the literals admitted by _enumtype_ (given as a string, e.g.
+'_hintpriority_', '_logpriority_', '_pixelformat_' etc).#
+
+Below is the list of the enum types in MoonSDL2, together with their admitted literal values.
+
+[[audioformat]]
+[small]#*audioformat*: AUDIO_XXX +
+Values: '_u8_', '_s8_', '_u16_', '_s16_', '_u16msb_', '_s16msb_', '_s32_', '_s32msb_', '_f32_', '_f32msb_'.#
+
+[[blendfactor]]
+[small]#*blendfactor*: SDL_BLENDFACTOR_XXX (https://wiki.libsdl.org/SDL2/SDL_BlendFactor[_SDL_BlendFactor_]) +
+Values: '_zero_', '_one_', '_src color_', '_one minus src color_', '_src alpha_', '_one minus src alpha_', '_dst color_', '_one minus dst color_', '_dst alpha_', '_one minus dst alpha_'.#
+
+[[blendoperation]]
+[small]#*blendoperation*: SDL_BLENDOPERATION_XXX (https://wiki.libsdl.org/SDL2/SDL_BlendOperation[_SDL_BlendOperation_]) +
+Values: '_add_', '_subtract_', '_rev subtract_', '_minimum_', '_maximum_'.#
+
+[[button]]
+[small]#*button*: SDL_BUTTON_XXX +
+Values: '_left_', '_right_', '_middle_', '_x1_', '_x2_'.#
+
+[[controlleraxis]]
+[small]#*controlleraxis*: SDL_CONTROLLER_AXIS_XXX (https://wiki.libsdl.org/SDL2/SDL_GameControlleAxis[_SDL_GameControlleAxis_]) +
+Values: '_invalid_', '_leftx_', '_lefty_', '_rightx_', '_righty_', '_triggerleft_', '_triggerright_'.#
+
+[[controllerbindtype]]
+[small]#*controllerbindtype*: SDL_CONTROLLER_BINDTYPE_XXX (https://wiki.libsdl.org/SDL2/SDL_GameControllerBindType[_SDL_GameControllerBindType_]) +
+Values: '_none_', '_button_', '_axis_', '_hat_'.#
+
+[[controllerbutton]]
+[small]#*controllerbutton*: SDL_CONTROLLER_BUTTON_XXX (https://wiki.libsdl.org/SDL2/SDL_GameControllerButton[_SDL_GameControllerButton_]) +
+Values: '_invalid_', '_a_', '_b_', '_x_', '_y_', '_back_', '_guide_', '_start_', '_leftstick_', '_rightstick_', '_leftshoulder_', '_rightshoulder_', '_dpad up_', '_dpad down_', '_dpad left_', '_dpad right_', '_misc1_', '_paddle1_', '_paddle2_', '_paddle3_', '_paddle4_', '_touchpad_'.#
+
+[[controllertype]]
+[small]#*controllertype*: SDL_CONTROLLER_TYPE_XXX (https://wiki.libsdl.org/SDL2/SDL_GameControllerType[_SDL_GameControllerType_]) +
+Values: '_unknown_', '_xbox360_', '_xboxone_', '_ps3_', '_ps4_', '_nintendo switch pro_', '_virtual_', '_ps5_', '_amazon luna_', '_google stadia_', '_nvidia shield_', '_nintendo switch joycon left_', '_nintendo switch joycon right_', '_nintendo switch joycon pair_'.#
+
+[[displayeventtype]]
+[small]#*displayeventtype*: SDL_DISPLAYEVENT_XXX (https://wiki.libsdl.org/SDL2/SDL_DisplayEventID[_SDL_DisplayEventID_]) +
+Values: '_none_', '_orientation_', '_connected_', '_disconnected_'.#
+
+[[eventtype]]
+[small]#*eventtype*: SDL_XXX (https://wiki.libsdl.org/SDL2/SDL_EventType[_SDL_EventType_]) +
+Values: '_firstevent_', '_quit_', '_app terminating_', '_app lowmemory_', '_app willenterbackground_', '_app didenterbackground_', '_app willenterforeground_', '_app didenterforeground_', '_localechanged_', '_displayevent_', '_windowevent_', '_syswmevent_', '_keydown_', '_keyup_', '_textediting_', '_textinput_', '_keymapchanged_', '_mousemotion_', '_mousebuttondown_', '_mousebuttonup_', '_mousewheel_', '_joyaxismotion_', '_joyballmotion_', '_joyhatmotion_', '_joybuttondown_', '_joybuttonup_', '_joydeviceadded_', '_joydeviceremoved_', '_joybatteryupdated_', '_controlleraxismotion_', '_controllerbuttondown_', '_controllerbuttonup_', '_controllerdeviceadded_', '_controllerdeviceremoved_', '_controllerdeviceremapped_', '_controllertouchpaddown_', '_controllertouchpadmotion_', '_controllertouchpadup_', '_controllersensorupdate_', '_fingerdown_', '_fingerup_', '_fingermotion_', '_dollargesture_', '_dollarrecord_', '_multigesture_', '_clipboardupdate_', '_dropfile_', '_droptext_', '_dropbegin_', '_dropcomplete_', '_audiodeviceadded_', '_audiodeviceremoved_', '_sensorupdate_', '_render targets reset_', '_render device reset_', '_pollsentinel_', '_userevent_', '_lastevent_'.#
+
+[[fading]]
+[small]#*fading*: MIX_XXX (_Mix_Fading_) +
+Values: '_no fading_', '_fading out_', '_fading in_'.#
+
+[[flashoperation]]
+[small]#*flashoperation*: SDL_FLASH_XXX (https://wiki.libsdl.org/SDL2/SDL_FlashOperation[_SDL_FlashOperation_]) +
+Values: '_cancel_', '_briefly_', '_until focused_'.#
+
+[[fontalign]]
+[small]#*fontalign*: TTF_WRAPPED_ALIGN_XXX +
+Values: '_left_', '_center_', '_right_'.#
+
+[[fontdirection]]
+[small]#*fontdirection*: TTF_DIRECTION_XXX (_TTF_Direction_) +
+Values: '_ltr_', '_rtl_', '_ttb_', '_btt_'.#
+
+[[fonthinting]]
+[small]#*fonthinting*: TTF_HINTING_XXX +
+Values: '_normal_', '_light_', '_mono_', '_none_', '_light subpixel_'.#
+
+[[fullscreenmode]]
+[small]#*fullscreenmode* +
+Values: '_real_', '_fake_', '_windowed_'.#
+
+[[glattr]]
+[small]#*glattr*: SDL_GL_XXX (https://wiki.libsdl.org/SDL2/SDL_GLattr[_SDL_GLattr_]) +
+Values: '_red size_', '_green size_', '_blue size_', '_alpha size_', '_buffer size_', '_doublebuffer_', '_depth size_', '_stencil size_', '_accum red size_', '_accum green size_', '_accum blue size_', '_accum alpha size_', '_stereo_', '_multisamplebuffers_', '_multisamplesamples_', '_accelerated visual_', '_retained backing_', '_context major version_', '_context minor version_', '_context egl_', '_context flags_', '_context profile mask_', '_share with current context_', '_framebuffer srgb capable_', '_context release behavior_', '_context reset notification_', '_context no error_', '_floatbuffers_'.#
+
+[[glprofile]]
+[small]#*glprofile*: SDL_GL_CONTEXT_PROFILE_XXX (https://wiki.libsdl.org/SDL2/SDL_GLprofile[_SDL_GLprofile_]) +
+Values: '_core_', '_compatibility_', '_es_'.#
+
+
+[[hapticdirection]]
+[small]#*hapticdirection*: SDL_HAPTIC_XXX +
+Values: '_polar_', '_cartesian_', '_spherical_', '_steering axis_'.#
+
+[[haptictype]]
+[small]#*haptictype*: SDL_HAPTIC_XXX +
+Values: '_constant_', '_sine_', '_leftright_', '_triangle_', '_sawtoothup_', '_sawtoothdown_', '_ramp_', '_spring_', '_damper_', '_inertia_', '_friction_', '_custom_'.#
+
+[[hatstate]]
+[small]#*hatstate*: SDL_HAT_XXX +
+Values: '_centered_', '_up_', '_right_', '_down_', '_left_', '_rightup_', '_rightdown_', '_leftup_', '_leftdown_'.#
+
+[[hintpriority]]
+[small]#*hintpriority*: SDL_HINT_XXX (https://wiki.libsdl.org/SDL2/SDL_HintPriority[_SDL_HintPriority_]) +
+Values: '_default_', '_normal_', '_override_'.#
+
+[[hittestresult]]
+[small]#*hittestresult*: SDL_HITTEST_XXX (https://wiki.libsdl.org/SDL2/SDL_HitTestResult[_SDL_HitTestResult_]) +
+Values: '_normal_', '_draggable_', '_resize topleft_', '_resize top_', '_resize topright_', '_resize right_', '_resize bottomright_', '_resize bottom_', '_resize bottomleft_', '_resize left_'.#
+
+[[joystickpowerlevel]]
+[small]#*joystickpowerlevel*: SDL_JOYSTICK_POWER_XXX (https://wiki.libsdl.org/SDL2/SDL_JoystickPowerLevel[_SDL_JoystickPowerLevel_]) +
+Values: '_unknown_', '_empty_', '_low_', '_medium_', '_full_', '_wired_'.#
+
+[[joysticktype]]
+[small]#*joysticktype*: SDL_JOYSTICK_TYPE_XXX (https://wiki.libsdl.org/SDL2/SDL_JoystickType[_SDL_JoystickType_]) +
+Values: '_unknown_', '_gamecontroller_', '_wheel_', '_arcade stick_', '_flight stick_', '_dance pad_', '_guitar_', '_drum kit_', '_arcade pad_', '_throttle_'.#
+
+[[keystate]]
+[small]#*keystate*: SDL_XXX +
+Values: '_pressed_', '_released_'.#
+
+[[logcategory]]
+[small]#*logcategory*: SDL_LOG_CATEGORY_XXX (https://wiki.libsdl.org/SDL2/SDL_LogCategory[_SDL_LogCategory_]) +
+Values: '_application_', '_error_', '_assert_', '_system_', '_audio_', '_video_', '_render_', '_input_', '_test_'.#
+
+[[logpriority]]
+[small]#*logpriority*: SDL_LOG_PRIORITY_XXX (https://wiki.libsdl.org/SDL2/SDL_LogPriority[_SDL_LogPriority_]) +
+Values: '_verbose_', '_debug_', '_info_', '_warn_', '_error_', '_critical_'.#
+
+[[mousewheeldir]]
+[small]#*mousewheeldir*: SDL_MOUSEWHEEL_XXX (https://wiki.libsdl.org/SDL2/SDL_MouseWheelDirection[_SDL_MouseWheelDirection_]) +
+Values: '_normal_', '_flipped_'.#
+
+[[musictype]]
+[small]#*musictype*: MUS_XXX (_Mix_MusicType_) +
+Values: '_none_', '_cmd_', '_wav_', '_mod_', '_mid_', '_ogg_', '_mp3_', '_flac_', '_opus_'.#
+
+[[orientation]]
+[small]#*orientation*: SDL_ORIENTATION_XXX (https://wiki.libsdl.org/SDL2/SDL_DisplayOrientation[_SDL_DisplayOrientation_]) +
+Values: '_unknown_', '_landscape_', '_landscape flipped_', '_portrait_', '_portrait flipped_'.#
+
+[[pixelformat]]
+[small]#*pixelformat*: SDL_PIXELFORMAT_XXX (https://wiki.libsdl.org/SDL2/SDL_PixelFormatEnum[_SDL_PixelFormatEnum_]) +
+Values: '_unknown_', '_index1lsb_', '_index1msb_', '_index4lsb_', '_index4msb_', '_index8_', '_rgb332_', '_rgb444_', '_bgr444_', '_rgb555_', '_bgr555_', '_argb4444_', '_rgba4444_', '_abgr4444_', '_bgra4444_', '_argb1555_', '_rgba5551_', '_abgr1555_', '_bgra5551_', '_rgb565_', '_bgr565_', '_rgb24_', '_bgr24_', '_rgb888_', '_rgbx8888_', '_bgr888_', '_bgrx8888_', '_argb8888_', '_rgba8888_', '_abgr8888_', '_bgra8888_', '_argb2101010_', '_yv12_', '_iyuv_', '_yuy2_', '_uyvy_', '_yvyu_', '_nv12_', '_nv21_', '_external oes_'.#
+
+[[powerstate]]
+[small]#*powerstate*: SDL_POWERSTATE_XXX (https://wiki.libsdl.org/SDL2/SDL_PowerState[_SDL_PowerState_]) +
+Values: '_unknown_', '_on battery_', '_no battery_', '_charging_', '_charged_'.#
+
+[[rwopstype]]
+[small]#*rwopstype*: SDL_RWOPS_XXX +
+Values: '_unknown_', '_winfile_', '_stdfile_', '_jnifile_', '_memory_', '_memory ro_'.#
+
+[[rwopswhence]]
+[small]#*rwopswhence*: RW_XXX +
+Values: '_seek set_', '_seek cur_', '_seek end_'.#
+
+[[sensortype]]
+[small]#*sensortype* = SDL_SENSOR_XXX (https://wiki.libsdl.org/SDL2/SDL_SensorType[_SDL_SensorType_]) +
+Values: '_invalid_', '_unknown_', '_accel_', '_gyro_', or an integer for custom types.#
+
+[[scalemode]]
+[small]#*scalemode*: SDL_ScaleModeXXX (https://wiki.libsdl.org/SDL2/SDL_ScaleMode[_SDL_ScaleMode_]) +
+Values: '_nearest_', '_linear_', '_best_'.#
+
+[[swapinterval]]
+[small]#*swapinterval* +
+Values: '_immediate_', '_vsync_', '_adaptive vsync_'.#
+
+[[systemcursor]]
+[small]#*systemcursor*: SDL_SYSTEM_CURSOR_XXX (https://wiki.libsdl.org/SDL2/SDL_SystemCursor[_SDL_SystemCursor_]) +
+Values: '_arrow_', '_ibeam_', '_wait_', '_crosshair_', '_waitarrow_', '_sizenwse_', '_sizenesw_', '_sizewe_', '_sizens_', '_sizeall_', '_no_', '_hand_'.#
+
+[[textureaccess]]
+[small]#*textureaccess*: SDL_TEXTUREACCESS_XXX (https://wiki.libsdl.org/SDL2/SDL_TextureAccess[_SDL_TextureAccess_]) +
+Values: '_static_', '_streaming_', '_target_'.#
+
+[[touchdevicetype]]
+[small]#*touchdevicetype*: SDL_TOUCH_DEVICE_XXX (https://wiki.libsdl.org/SDL2/SDL_TouchDeviceType[_SDL_TouchDeviceType_]) +
+Values: '_invalid_', '_direct_', '_indirect absolute_', '_indirect relative_'.#
+
+[[windoweventtype]]
+[small]#*windoweventtype*: SDL_WINDOWEVENT_XXX (https://wiki.libsdl.org/SDL2/SDL_WindowEventID[_SDL_WindowEventID_]) +
+Values: '_none_', '_shown_', '_hidden_', '_exposed_', '_moved_', '_resized_', '_size changed_', '_minimized_', '_maximized_', '_restored_', '_enter_', '_leave_', '_focus gained_', '_focus lost_', '_close_', '_take focus_', '_hit test_', '_iccprof changed_', '_display changed_'.#
+
+////
+££
+[[zzz]]
+[small]#*zzz*: SDL_ZZZ_XXX (https://wiki.libsdl.org/SDL2/SDL_Zzz[_SDL_Zzz_]) +
+Values:
+.#
+
+$$
+https://wiki.libsdl.org/SDL2/SDL_
+
+////
+

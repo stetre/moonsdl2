@@ -1,0 +1,123 @@
+
+[[hapticstructs]]
+=== haptic effects
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_HapticEffect[SDL_HapticEffect].#
+
+An *hapticeffect* is one of the structs described in this section, depending on the _type_ field value
+(<<haptictype, haptictype>>) as per the following list:
+
+
+[[haptictype_struct]]
+[small]#*type*: *struct* +
+'_constant_': <<hapticconstant, hapticconstant>>, +
+'_sine_': <<hapticperiodic, hapticperiodic>>, +
+'_triangle_': <<hapticperiodic, hapticperiodic>>, +
+'_sawtoothup_': <<hapticperiodic, hapticperiodic>>, +
+'_sawtoothdown_': <<hapticperiodic, hapticperiodic>>, +
+'_leftright_': <<hapticleftright, hapticleftright>>, +
+'_ramp_': <<hapticramp, hapticramp>>, +
+'_spring_': <<hapticcondition, hapticcondition>>, +
+'_damper_': <<hapticcondition, hapticcondition>>, +
+'_inertia_': <<hapticcondition, hapticcondition>>, +
+'_friction_': <<hapticcondition, hapticcondition>>, +
+'_custom_': <<hapticcustom, hapticcustom>>.#
+
+
+* [[hapticconstant]]
+[small]#*hapticconstant* = { +
+_type_: '_constant_', +
+_dirtype_: <<hapticdirection, hapticdirection>>, +
+_dir_: {integer}[3], +
+_length_: integer, +
+_delay_: integer, +
+_button_: integer, +
+_interval_: integer, +
+_level_: integer, +
+_attack_length_: integer, +
+_attack_level_: integer, +
+_fade_length_: integer, +
+_fade_level_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticConstant[SDL_HapticConstant])#
+
+* [[hapticperiodic]]
+[small]#*hapticperiodic* = { +
+_type_: '_sine_' or '_triangle_' or '_sawtoothup_' or '_sawtoothdown_' , +
+_dirtype_: <<hapticdirection, hapticdirection>>, +
+_dir_: {integer}[3], +
+_length_: integer, +
+_delay_: integer, +
+_button_: integer, +
+_interval_: integer, +
+_period_: integer, +
+_magnitude_: integer, +
+_offset_: integer, +
+_phase_: integer, +
+_attack_length_: integer, +
+_attack_level_: integer, +
+_fade_length_: integer, +
+_fade_level_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticPeriodic[SDL_HapticPeriodic])#
+
+* [[hapticcondition]]
+[small]#*hapticcondition* = { +
+_type_: '_spring_' or '_damper_' or '_inertia_' or '_friction_', +
+_dirtype_: <<hapticdirection, hapticdirection>>, +
+_dir_: {integer}[3], +
+_length_: integer, +
+_delay_: integer, +
+_button_: integer, +
+_inteval_: integer, +
+_right_sat_: {integer}[3], +
+_left_sat_: {integer}[3], +
+_right_coeff_: {integer}[3], +
+_left_coeff_: {integer}[3], +
+_deadband_: {integer}[3], +
+_center_: {integer}[3], +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticCondition[SDL_HapticCondition])#
+
+* [[hapticramp]]
+[small]#*hapticramp* = { +
+_type_: '_ramp_', +
+_dirtype_: <<hapticdirection, hapticdirection>>, +
+_dir_: {integer}[3], +
+_length_: integer, +
+_delay_: integer, +
+_button_: integer, +
+_interval_: integer, +
+_start_: integer, +
+_end_: integer, +
+_attack_length_: integer, +
+_attack_level_: integer, +
+_fade_length_: integer, +
+_fade_level_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticRamp[SDL_HapticRamp])#
+
+* [[hapticleftright]]
+[small]#*hapticleftright* = { +
+_type_: '_leftright_', +
+_length_: integer, +
+_large_magnitude_: integer, +
+_small_magnitude_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticLeftRight[SDL_HapticLeftRight])#
+
+* [[hapticcustom]]
+[small]#*hapticcustom* = { +
+_type_: '_custom_', +
+_dirtype_: <<hapticdirection, hapticdirection>>, +
+_dir_: {integer}[3], +
+_length_: integer, +
+_delay_: integer, +
+_button_: integer, +
+_interval_: integer, +
+_channels_: integer, +
+_period_: integer, +
+_samples_: integer, +
+_attack_length_: integer, +
+_attack_level_: integer, +
+_fade_length_: integer, +
+_fade_level_: integer, +
+_data_: {integer}[_samples_++*++_channels_], +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_HapticCustom[SDL_HapticCustom])#
+
+

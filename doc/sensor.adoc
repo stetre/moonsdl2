@@ -1,0 +1,59 @@
+
+[[sensor]]
+=== sensor
+
+
+[[sensor_open]]
+* _sensor_ = *sensor_open*(_sensorindex_) +
+_sensor_ = *sensor_open_from_id*(_id_) +
+_sensor_++:++*close*( ) +
+[small]#_sensorindex_: integer (_1 .. numsensors_), +
+_id_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SensorOpen[SDL_SensorOpen],
+https://wiki.libsdl.org/SDL2/SDL_SensorFromInstanceID[SDL_SensorFromInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_SensorClose[SDL_SensorClose].#
+
+
+[[sensor_methods]]
+* _string_ = _sensor_++:++*get_name*( ) +
+<<sensortype, _sensortype_>> = _sensor_++:++*get_type*( ) +
+<<sensortype, _sensortype_>> = _sensor_++:++*get_non_portable_type*( ) +
+_id_ = _sensor_++:++*get_id*( ) +
+_data_, _timestamps_ = _sensor_++:++*get_data*( ) +
+[small]#_id_: integer, +
+_data_: {float}[_numvalues_], +
+_timestamps_ : {integer}[_numvalues_]. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SensorGetName[SDL_SensorGetName],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetType[SDL_SensorGetType],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetNonPortableType[SDL_SensorGetNonPortableType],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetInstanceID[SDL_SensorGetInstanceID],
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SensorGetData[SDL_SensorGetData].#
+
+[[sensor_update]]
+* *sensor_update*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SensorUpdate[SDL_SensorUpdate].#
+
+[[num_sensors]]
+* _numsensors_ = *num_sensors*( ) +
+_string_ | _nil_ = *sensor_name*(_sensorindex_) +
+_id_ = *sensor_id*(_sensorindex_) +
+<<sensortype, _sensortype_>> = *sensor_type*(_sensorindex_) +
+<<sensortype, _sensortype_>> = *sensor_non_portable_type*(_sensorindex_) +
+[small]#_numsensors_: integer, +
+_sensorindex_: integer (_1 .. numsensors_), +
+_id_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_NumSensors[SDL_NumSensors],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetDeviceName[SDL_SensorGetDeviceName],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetDeviceInstanceID[SDL_SensorGetDeviceInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetDeviceType[SDL_SensorGetDeviceType],
+https://wiki.libsdl.org/SDL2/SDL_SensorGetDeviceNonPortableType[SDL_SensorGetDeviceNonPortableType].#
+
+////
+££
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+////
+

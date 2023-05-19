@@ -1,0 +1,85 @@
+
+[[flags]]
+== Flags
+
+
+Flags in MoonSDL2 functions and structs are always represented as plain integers,
+and encoded in the same way as the corresponding flags in the C SDL2 API.
+
+The *sdl* table contains the SDL_XXX values, renamed as *sdl.XXX*
+(e.g. sdl.INIT_TIMER, sdl.INIT_AUDIO, etc.). It also contains the IMG_XXX values from SDL2_image
+renamed as sdl.IMG_XXX, and similarly for the values from SDL2_ttf and SDL2_mixer.
+
+For each flags type (see the list below), a utility function is also available to map
+an integer code to a list of string literals, each corresponding to an individual bit set 
+in the code, and viceversa to encode an integer value from the individual bits given 
+as a list of string literals. 
+The generic definition of such functions is the following, where *xxxflags* stands for 
+*initflags*, *windowflags*, etc:
+
+[[xxxflags]]
+* _code_ = *xxxflags*(_s1_, _s2_, _..._) +
+_s1_, _s2_, _..._ = *xxxflags*(_code_) +
+[small]#Maps the integer _code_ to/from the list of string values _s1_, _s2_, _..._.#
+
+
+[[audioallowflags]]
+[small]#*audioallowflags*: sdl.AUDIO_ALLOW_XXX +
+Values: '_frequency change_', '_format change_', '_channels change_', '_samples change_', '_any change_'.#
+
+[[flipflags]]
+[small]#*flipflags*: sdl.FLIP_XXX (https://wiki.libsdl.org/SDL2/SDL_RendererFlip[_SDL_RendererFlip_]) +
+Values: '_none_', '_horizontal_', '_vertical_'.#
+
+[[glcontextflags]]
+[small]#*glcontextflags*: sdl.SDL_GL_CONTEXT_XXX_FLAG (https://wiki.libsdl.org/SDL2/SDL_GLcontextFlag[_SDL_GLcontextFlag_]) +
+Values: '_debug_', '_forward compatible_', '_robust access_', '_reset isolation_'.#
+
+
+[[imginitflags]]
+[small]#*imginitflags*: sdl.IMG_INIT_XXX (https://wiki.libsdl.org/SDL2_image/IMG_Init[_IMG_InitFlags_]) +
+Values: '_jpg_', '_png_', '_tif_', '_webp_', '_jxl_', '_avif_'.#
+
+[[initflags]]
+[small]#*initflags*: sdl.INIT_XXX +
+Values: '_timer_', '_audio_', '_video_', '_joystick_', '_haptic_', '_gamecontroller_', '_events_', '_sensor_', '_noparachute_', '_everything_'.#
+
+[[messageboxbuttonflags]]
+[small]#*messageboxbuttonflags*: sdl.MESSAGEBOX_BUTTON_XXX (https://wiki.libsdl.org/SDL2/SDL_MessageBoxButtonFlags[_SDL_MessageBoxButtonFlags_]) +
+Values: '_returnkey default_', '_escapekey default_'.#
+
+[[messageboxflags]]
+[small]#*messageboxflags*: sdl.MESSAGEBOX_XXX (https://wiki.libsdl.org/SDL2/SDL_MessageBoxFlags[_SDL_MessageBoxFlags_]) +
+Values: '_error_', '_warning_', '_information_', '_buttons left to right_', '_buttons right to left_'.#
+
+[[mixinitflags]]
+[small]#*mixinitflags*: sdl.MIX_INIT_XXX (https://wiki.libsdl.org/SDL2_mixer/Mix_Init[_MIX_InitFlags_]) +
+Values: '_flac_', '_mod_', '_mp3_', '_ogg_', '_mid_', '_opus_'.#
+
+[[rendererflags]]
+[small]#*rendererflags*: sdl.RENDERER_XXX (https://wiki.libsdl.org/SDL2/SDL_RendererFlags[_SDL_RendererFlags_]) +
+Values: '_software_', '_accelerated_', '_presentvsync_', '_targettexture_'.#
+
+[[ttfstyleflags]]
+[small]#*ttfstyleflags*: sdl.TTF_STYLE_XXX +
+Values: '_normal_', '_bold_', '_italic_', '_underline_', '_strikethrough_'.#
+
+[[windowflags]]
+[small]#*windowflags*: sdl.WINDOW_XXX (https://wiki.libsdl.org/SDL2/SDL_WindowFlags[_SDL_WindowFlags_]) +
+Values:  '_fullscreen_', '_opengl_', '_shown_', '_hidden_', '_borderless_', '_resizable_', '_minimized_', '_maximized_', '_mouse grabbed_', '_input focus_', '_mouse focus_', '_fullscreen desktop_', '_foreign_', '_allow highdpi_', '_mouse capture_', '_always on top_', '_skip taskbar_', '_utility_', '_tooltip_', '_popup menu_', '_keyboard grabbed_', '_vulkan_', '_metal_', '_input grabbed_'.#
+
+
+////
+££
+[[zzz]]
+[small]#*zzz*: sdl.ZZZ_XXX (https://wiki.libsdl.org/SDL2/SDL_Zzz[_SDL_Zzz_]) +
+Values: 
+.#
+
+https://wiki.libsdl.org/SDL2/SDL_[
+https://wiki.libsdl.org/SDL2_image/IMG_[
+https://wiki.libsdl.org/SDL2_ttf/TTF_[
+https://wiki.libsdl.org/SDL2_mixer/Mix_[
+
+////
+

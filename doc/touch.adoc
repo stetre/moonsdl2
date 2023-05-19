@@ -1,0 +1,40 @@
+
+[[touch]]
+=== touch
+
+//[small]#Rfr: https://wiki.libsdl.org/SDL2/CategoryZzz[Zzz].#
+
+[[get_touch_devices]]
+* _{<<touchdevice, touchdevice>>}_ = *get_touch_devices*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GetTouchDevices[SDL_GetTouchDevices].#
+
+[[get_touch_finger]]
+* <<finger, _finger_>> = *get_touch_finger*(_touch_id_, _index_) +
+[small]#_index = integer (_1 .. num_fingers_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_GetTouchFinger[SDL_GetTouchFinger].#
+
+[[dollar_gestures]]
+* *record_gesture*([_touch_id=-1_]) +
+*save_dollar_template*(_gesture_id_, _file_) +
+_numsaved_ = *save_all_dollar_templates*(_file_) +
+_numloaded_ = *load_dollar_templates*(_touch_id_, _file_) +
+[small]#_file_: string (pathname), +
+_numsaved_, _numloaded_: integer, +
+_gesture_id_, touch_id_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/README/gesture[Dollar Gestures],
+https://wiki.libsdl.org/SDL2/SDL_RecordGesture[SDL_RecordGesture],
+https://wiki.libsdl.org/SDL2/SDL_SaveDollarTemplate[SDL_SaveDollarTemplate],
+https://wiki.libsdl.org/SDL2/SDL_SaveAllDollarTemplates[SDL_SaveAllDollarTemplates],
+https://wiki.libsdl.org/SDL2/SDL_LoadDollarTemplates[SDL_LoadDollarTemplates].#
+
+
+////
+££
+[[]]
+* __ = **(__) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+https://wiki.libsdl.org/SDL2/README/touch
+////
+

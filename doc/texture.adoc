@@ -1,0 +1,89 @@
+
+[[texture]]
+=== texture 
+
+[[create_texture]]
+* _texture_ = *create_texture*(<<renderer, _renderer_>>, <<textureaccess, _textureaccess_>>, _w_, _h_) +
+_texture_ = *create_texture*(<<renderer, _renderer_>>, <<surface, _surface_>>) +
+_texture_ = *load_texture*(<<renderer, _renderer_>>, _file_) +
+_texture_++:++*destroy*( ) +
+[small]#_w_, _h_: integer, +
+_file_: string (pathname). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_CreateTexture[SDL_CreateTexture],
+https://wiki.libsdl.org/SDL2/SDL_CreateTextureFromSurface[SDL_CreateTextureFromSurface],
+https://wiki.libsdl.org/SDL2_image/IMG_LoadTexture[IMG_LoadTexture],
+https://wiki.libsdl.org/SDL2/SDL_DestroyTexture[SDL_DestroyTexture].#
+
+[[gl_bind]]
+* _texture_++:++*gl_bind*( ) +
+_texture_++:++*gl_unbind*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_GL_BindTexture[SDL_GL_BindTexture],
+https://wiki.libsdl.org/SDL2/SDL_GL_UnbindTexture[SDL_GL_UnbindTexture].#
+
+[[texture_query]]
+* _w_, _h_, <<pixelformat, _pixelformat_>>, <<textureaccess, _textureaccess_>> = _texture_++:++*query*( ) +
+[small]#_w_, _h_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_QueryTexture[SDL_QueryTexture].#
+
+[[set_texture_color_mod]]
+* _texture_++:++*set_color_mod*(_r_, _g_, _b_) +
+_texture_++:++*set_alpha_mod*(_a_) +
+_r_, _g_, _b_ = _texture_++:++*get_color_mod*( ) +
+_a_ = _texture_++:++*get_alpha_mod*( ) +
+[small]#_r_, _g_, _b_, _a_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetTextureColorMod[SDL_SetTextureColorMod],
+https://wiki.libsdl.org/SDL2/SDL_SetTextureAlphaMod[SDL_SetTextureAlphaMod],
+https://wiki.libsdl.org/SDL2/SDL_GetTextureColorMod[SDL_GetTextureColorMod],
+https://wiki.libsdl.org/SDL2/SDL_GetTextureAlphaMod[SDL_GetTextureAlphaMod].#
+
+[[set_texture_blend_mode]]
+* _texture_++:++*set_blend_mode*(_mode_) +
+_mode_ = _texture_++:++*get_blend_mode*( ) +
+[small]#_mode_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_SetTextureBlendMode[SDL_SetTextureBlendMode],
+https://wiki.libsdl.org/SDL2/SDL_GetTextureBlendMode[SDL_GetTextureBlendMode].#
+
+[[set_texture_scale_mode]]
+* _texture_++:++*set_scale_mode*(<<scalemode, _scalemode_>>) +
+<<scalemode, _scalemode_>> = _texture_++:++*get_scale_mode*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_SetTextureScaleMode[SDL_SetTextureScaleMode],
+https://wiki.libsdl.org/SDL2/SDL_GetTextureScaleMode[SDL_GetTextureScaleMode].#
+
+[[compose_custom_blend_mode]]
+* _mode_ = _texture_++:++*compose_custom_blend_mode*(_srccolorfactor_, _dstcolorfactor_, _colorop_, _srcalphafactor_, _dstalphafactor_, _alphaop_) +
+[small]#_srccolorfactor_, _dstcolorfactor_: <<blendfactor, blendfactor>>, +
+_srcalphafactor_, _dstalphafactor_: <<blendfactor, blendfactor>>, +
+_colorop_, _alphaop_: <<blendoperation, blendoperation>>, +
+_mode_ = integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_ComposeCustomBlendMode[SDL_ComposeCustomBlendMode].#
+
+
+[[update_texture]]
+* _texture_++:++*update*([<<rect, _rect_>>], _pixels_, _pitch_) +
+_texture_++:++*update_yuv*([<<rect, _rect_>>], _yplane_, _ypitch_, _uplane_, _upitch_, _vplane_, _vpitch_) +
+_texture_++:++*update_nv*([<<rect, _rect_>>], _yplane_, _ypitch_, _uvplane_, _uvpitch_) +
+[small]#_pixels_, _yplane_, _uplane_, _vplane_, _uvplane_: <<memptr, memptr>>, +
+_pitch_, _ypitch_, _upitch_, _vpitch_, _uvpitch_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_UpdateTexture[SDL_UpdateTexture],
+https://wiki.libsdl.org/SDL2/SDL_UpdateYUVTexture[SDL_UpdateYUVTexture],
+https://wiki.libsdl.org/SDL2/SDL_UpdateNVTexture[SDL_UpdateNVTexture].#
+
+[[lock_texture]]
+* _pixels_, _pitch_ = _texture_++:++*lock*([<<rect, _rect_>>]) +
+<<surface, _surface_>> = _texture_++:++*lock_to_surface*([<<rect, _rect_>>]) +
+_texture_++:++*unlock*( ) +
+[small]#_pixels_: <<memptr, memptr>>, +
+_pitch_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_LockTexture[SDL_LockTexture],
+https://wiki.libsdl.org/SDL2/SDL_LockTextureToSurface[SDL_LockTextureToSurface],
+https://wiki.libsdl.org/SDL2/SDL_UnlockTexture[SDL_UnlockTexture].#
+
+////
+
+[[]]
+* _texture_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+////
+

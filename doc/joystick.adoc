@@ -1,0 +1,187 @@
+
+[[joystick]]
+=== joystick
+
+[[joystick_open]]
+* _joystick_ = *joystick_open*(_joystickindex_) +
+_joystick_++:++*close*( ) +
+[small]#_joystickindex_: integer(_1 .. numjoy_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickOpen[SDL_JoystickOpen],
+https://wiki.libsdl.org/SDL2/SDL_JoystickClose[SDL_JoystickClose].#
+
+[[joystick_from_id]]
+* _joystick_ = *joystick_from_id*(_joystickid_) +
+_joystick_ = *joystick_from_player_index*(_playerindex_) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickFromInstanceID[SDL_JoystickFromInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_JoystickFromPlayerIndex[SDL_JoystickFromPlayerIndex].#
+
+
+[[num_joysticks]]
+* _numjoysticks_ = *num_joysticks*( ) +
+_string_ = *joystick_name*(_joystickindex_) +
+<<joystickguid, _joystickguid_>> = *joystick_guid*(_joystickindex_) +
+_integer_ = *joystick_vendor*(_joystickindex_) +
+_integer_ = *joystick_product*(_joystickindex_) +
+_integer_ = *joystick_product_version*(_joystickindex_) +
+<<joysticktype, _joysticktype_>> = *joystick_type*(_joystickindex_) +
+_integer_ = *joystick_id*(_joystickindex_) +
+_string_ = *joystick_path*(_joystickindex_) +
+_integer_ = *joystick_player_index*(_joystickindex_) +
+[small]#_joystickindex_: integer(_1 .. numjoysticks_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_NumJoysticks[SDL_NumJoysticks],
+https://wiki.libsdl.org/SDL2/SDL_JoystickNameForIndex[SDL_JoystickNameForIndex],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceGUID[SDL_JoystickGetDeviceGUID],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceVendor[SDL_JoystickGetDeviceVendor],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceProduct[SDL_JoystickGetDeviceProduct],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceProductVersion[SDL_JoystickGetDeviceProductVersion],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceType[SDL_JoystickGetDeviceType],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDeviceInstanceID[SDL_JoystickGetDeviceInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_JoystickPath[SDL_JoystickPath],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetDevicePlayerIndex[SDL_JoystickGetDevicePlayerIndex].#
+
+////
+* *lock_joysticks*( ) +
+*unlock_joysticks*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_LockJoysticks[SDL_LockJoysticks],
+https://wiki.libsdl.org/SDL2/SDL_UnlockJoysticks[SDL_UnlockJoysticks].#
+////
+
+[[joystick_attach_virtual]]
+* _joystickindex_ = *joystick_attach_virtual*(_naxes_, _nbuttons_, _nhats_) +
+*joystick_detach_virtual*(_joystickindex_) +
+_boolean_ = *joystick_is_virtual*(_joystickindex_) +
+[small]#_naxes_, _nbuttons_, _nhats_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickAttachVirtual[SDL_JoystickAttachVirtual],
+https://wiki.libsdl.org/SDL2/SDL_JoystickDetachVirtual[SDL_JoystickDetachVirtual],
+https://wiki.libsdl.org/SDL2/SDL_JoystickIsVirtual[SDL_JoystickIsVirtual].#
+
+
+
+[[joystick_event_state]]
+* *joystick_event_enable*( ) +
+*joystick_event_disable*( ) +
+_state_ = *joystick_event_state*( ) +
+*joystick_update*( ) +
+[small]#_state_: '_enabled_' or '_disabled_'. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickEventState[SDL_JoystickEventState],
+https://wiki.libsdl.org/SDL2/SDL_JoystickUpdate[SDL_JoystickUpdate].#
+
+
+[[joystick_guid_info]]
+* _string_ = *joystick_guid_to_string*(<<joystickguid, _joystickguid_>>) +
+<<joystickguid, _joystickguid_>> = *joystick_string_to_guid*(_string_) +
+<<joystickguidinfo, _joystickguidinfo_>> = *joystick_guid_info*(<<joystickguid, _joystickguid_>>) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickGetGUIDString[SDL_JoystickGetGUIDString],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetGUIDFromString[SDL_JoystickGetGUIDFromString],
+https://wiki.libsdl.org/SDL2/SDL_GetJoystickGUIDInfo[SDL_GetJoystickGUIDInfo].#
+
+[[joystick_methods]]
+* _string_ = _joystick_++:++*get_name*( ) +
+<<joystickguid, _joystickguid_>> = _joystick_++:++*get_guid*( ) +
+_integer_ = _joystick_++:++*get_vendor*( ) +
+_integer_ = _joystick_++:++*get_product*( ) +
+_integer_ = _joystick_++:++*get_product_version*( ) +
+_string_ = _joystick_++:++*get_serial*( ) +
+_integer_ = _joystick_++:++*get_firmware_version*( ) +
+<<joysticktype, _joysticktype_>> = _joystick_++:++*get_type*( ) +
+_id_ = _joystick_++:++*get_id*( ) +
+_string_ = _joystick_++:++*get_path*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickName[SDL_JoystickName],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetGUID[SDL_JoystickGetGUID],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetVendor[SDL_JoystickGetVendor],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetProduct[SDL_JoystickGetProduct],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetProductVersion[SDL_JoystickGetProductVersion],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetSerial[SDL_JoystickGetSerial],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetFirmwareVersion[SDL_JoystickGetFirmwareVersion],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetType[SDL_JoystickGetType],
+https://wiki.libsdl.org/SDL2/SDL_JoystickInstanceID[SDL_JoystickInstanceID],
+https://wiki.libsdl.org/SDL2/SDL_JoystickPath[SDL_JoystickPath].#
+
+
+[[set_joystick_player_index]]
+* _joystick_++:++*set_player_index*([_integer_]) +
+_integer_ = _joystick_++:++*get_player_index*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickSetPlayerIndex[SDL_JoystickSetPlayerIndex],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetPlayerIndex[SDL_JoystickGetPlayerIndex].#
+
+[[joystick_axes]]
+* _numaxes_ = _joystick_++:++*num_axes*( ) +
+_integer_ = _joystick_++:++*get_axis*(_axis_) +
+_integer_ = _joystick_++:++*get_axis_initial_state*(_axis_) +
+_joystick_++:++*set_virtual_axis*(_axis_, _integer_) +
+[small]#_axis_: integer (_1 .. numaxes_). +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickNumAxes[SDL_JoystickNumAxes],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetAxis[SDL_JoystickGetAxis],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetAxisInitialState[SDL_JoystickGetAxisInitialState],
+https://wiki.libsdl.org/SDL2/SDL_JoystickSetVirtualAxis[SDL_JoystickSetVirtualAxis].#
+
+[[joystick_balls]]
+* _numballs_ = _joystick_++:++*num_balls*( ) +
+_dx_, _dy_ = _joystick_++:++*get_ball*(_ball_) +
+[small]#_ball_: integer (_1 .. numballs_), +
+_dx_, _dy_: integer. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickNumBalls[SDL_JoystickNumBalls],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetBall[SDL_JoystickGetBall].#
+
+[[joystick_buttons]]
+* _numbuttons_ = _joystick_++:++*num_buttons*( ) +
+<<keystate, _keystate_>> = _joystick_++:++*get_button*(_button_) +
+_joystick_++:++*set_virtual_button*(_button_, <<keystate, _keystate_>>) +
+[small]#_button_: integer (_1 .. numbuttons_), +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickNumButtons[SDL_JoystickNumButtons],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetButton[SDL_JoystickGetButton],
+https://wiki.libsdl.org/SDL2/SDL_JoystickSetVirtualButton[SDL_JoystickSetVirtualButton].#
+
+[[joystick_hats]]
+* _numhats_ = _joystick_++:++*num_hats*( ) +
+<<hatstate, _hatstate_>> = _joystick_++:++*get_hat*(_hat_) +
+_joystick_++:++*set_virtual_hat*(_hat_, <<hatstate, _hatstate_>>) +
+[small]#_hat_: integer (_1 .. numhats_), +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickNumHats[SDL_JoystickNumHats],
+https://wiki.libsdl.org/SDL2/SDL_JoystickGetHat[SDL_JoystickGetHat],
+https://wiki.libsdl.org/SDL2/SDL_JoystickSetVirtualHat[SDL_JoystickSetVirtualHat].#
+
+[[joystick_rumble]]
+* _joystick_++:++*rumble*(_lowfreq_, _highfreq_, _durms_) +
+_joystick_++:++*rumble_triggers*(_left_, _right_, _durms_) +
+_boolean_ = _joystick_++:++*has_rumble*( ) +
+_boolean_ = _joystick_++:++*has_rumble_triggers*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickRumble[SDL_JoystickRumble],
+https://wiki.libsdl.org/SDL2/SDL_JoystickRumbleTriggers[SDL_JoystickRumbleTriggers],
+https://wiki.libsdl.org/SDL2/SDL_JoystickHasRumble[SDL_JoystickHasRumble],
+https://wiki.libsdl.org/SDL2/SDL_JoystickHasRumbleTriggers[SDL_JoystickHasRumbleTriggers].#
+
+[[joystick_is_haptic]]
+* _boolean = _joystick_++:++*is_haptic*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickIsHaptic[SDL_JoystickIsHaptic].#
+
+[[joystick_led]]
+* _joystick_++:++*set_led*(_r_, _g_, _b_) +
+_boolean_ = _joystick_++:++*has_led*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickSetLED[SDL_JoystickSetLED],
+https://wiki.libsdl.org/SDL2/SDL_[SDL_JoystickHasLED].#
+
+[[joystick_current_power_level]]
+* <<joystickpowerlevel, _joystickpowerlevel_>> = _joystick_++:++*get_current_power_level*( ) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickCurrentPowerLevel[SDL_JoystickCurrentPowerLevel].#
+
+[[joystick_get_attached]]
+* _boolean_ = _joystick_++:++*get_attached*( ) +
+[small]#_boolean_: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickGetAttached[SDL_JoystickGetAttached].#
+
+////
+[[joystick_send_effect]]
+* _joystick_++:++*send_effect*(@@) +
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_JoystickSendEffect[SDL_JoystickSendEffect].#
+////
+
+////
+££
+[[]]
+* _joystick_++:++**( ) +
+[small]#__: string. +
+Rfr: https://wiki.libsdl.org/SDL2/SDL_[SDL_].#
+
+////
+

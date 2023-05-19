@@ -1,0 +1,350 @@
+[[event]]
+=== events
+
+[small]#Rfr: https://wiki.libsdl.org/SDL2/SDL_Event[SDL_Event].#
+
+An *event* is one of the structs described in this section, depending on the _type_ field value (<<eventtype, _eventtype_>>) as per the following list:
+
+[[eventtype_struct]]
+[small]#*type*: *struct* +
+'_firstevent_': <<commonevent, commonevent>>, +
+'_quit_': <<commonevent, commonevent>>, +
+'_app terminating_': <<commonevent, commonevent>>, +
+'_app lowmemory_': <<commonevent, commonevent>>, +
+'_app willenterbackground_': <<commonevent, commonevent>>, +
+'_app didenterbackground_': <<commonevent, commonevent>>, +
+'_app willenterforeground_': <<commonevent, commonevent>>, +
+'_app didenterforeground_': <<commonevent, commonevent>>, +
+'_localechanged_': <<commonevent, commonevent>>, +
+'_displayevent_': <<displayevent, displayevent>>, +
+'_windowevent_': <<windowevent, windowevent>>, +
+'_syswmevent_': <<commonevent, commonevent>>, +
+'_keydown_': <<keyboardevent, keyboardevent>>, +
+'_keyup_': <<keyboardevent, keyboardevent>>, +
+'_textediting_': <<texteditingevent, texteditingevent>>, +
+'_textinput_': <<textinputevent, textinputevent>>, +
+'_keymapchanged_': <<commonevent, commonevent>>, +
+'_mousemotion_': <<mousemotionevent, mousemotionevent>>, +
+'_mousebuttondown_': <<mousebuttonevent, mousebuttonevent>>, +
+'_mousebuttonup_': <<mousebuttonevent, mousebuttonevent>>, +
+'_mousewheel_': <<mousewheelevent, mousewheelevent>>, +
+'_joyaxismotion_': <<joyaxisevent, joyaxisevent>>, +
+'_joyballmotion_': <<joyballevent, joyballevent>>, +
+'_joyhatmotion_': <<joyhatevent, joyhatevent>>, +
+'_joybuttondown_': <<joybuttonevent, joybuttonevent>>, +
+'_joybuttonup_': <<joybuttonevent, joybuttonevent>>, +
+'_joydeviceadded_': <<joydeviceaddedevent, joydeviceaddedevent>>, +
+'_joydeviceremoved_': <<joydeviceremovedevent, joydeviceremovedevent>>, +
+'_joybatteryupdated_': <<joybatteryevent, joybatteryevent>>, +
+'_controlleraxismotion_': <<controlleraxisevent, controlleraxisevent>>, +
+'_controllerbuttondown_': <<controllerbuttonevent, controllerbuttonevent>>, +
+'_controllerbuttonup_': <<controllerbuttonevent, controllerbuttonevent>>, +
+'_controllerdeviceadded_': <<controllerdeviceaddedevent, controllerdeviceaddedevent>>, +
+'_controllerdeviceremoved_': <<controllerdeviceevent, controllerdeviceevent>>, +
+'_controllerdeviceremapped_': <<controllerdeviceevent, controllerdeviceevent>>, +
+'_controllertouchpaddown_': <<controllertouchpadevent, controllertouchpadevent>>, +
+'_controllertouchpadmotion_': <<controllertouchpadevent, controllertouchpadevent>>, +
+'_controllertouchpadup_': <<controllertouchpadevent, controllertouchpadevent>>, +
+'_controllersensorupdate_': <<controllersensorevent, controllersensorevent>>, +
+'_fingerdown_': <<fingerevent, fingerevent>>, +
+'_fingerup_': <<fingerevent, fingerevent>>, +
+'_fingermotion_': <<fingerevent, fingerevent>>, +
+'_dollargesture_': <<dollargestureevent, dollargestureevent>>, +
+'_dollarrecord_': <<dollargestureevent, dollargestureevent>>, +
+'_multigesture_': <<multigestureevent, multigestureevent>>, +
+'_clipboardupdate_': <<commonevent, commonevent>>, +
+'_dropfile_': <<dropevent, dropevent>>, +
+'_droptext_': <<dropevent, dropevent>>, +
+'_dropbegin_': <<dropevent, dropevent>>, +
+'_dropcomplete_': <<dropevent, dropevent>>, +
+'_audiodeviceadded_': <<commonevent, commonevent>>, +
+'_audiodeviceremoved_': <<commonevent, commonevent>>, +
+'_sensorupdate_': <<sensorevent, sensorevent>>, +
+'_render targets reset_': <<commonevent, commonevent>>, +
+'_render device reset_': <<commonevent, commonevent>>, +
+'_pollsentinel_': <<commonevent, commonevent>>, +
+'_userevent_': <<userevent, userevent>>, +
+'_lastevent_': <<commonevent, commonevent>>.#
+
+
+* [[commonevent]]
+[small]#*commonevent* = { +
+_type_: <<eventtype, eventtype>>, +
+_timestamp_: integer (milliseconds), +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_Event[SDL_Event])#
+
+* [[displayevent]]
+[small]#*displayevent* = { +
+_type_: '_displayevent_', +
+_timestamp_: integer (milliseconds), +
+_display_: integer (1-based index), +
+_event_: <<displayeventtype, displayeventtype>>, +
+_data_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_DisplayEvent[SDL_DisplayEvent])#
+
+* [[windowevent]]
+[small]#*windowevent* = { +
+_type_: '_windowevent_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_event_: <<windoweventtype, windoweventtype>>, +
+_data1_: integer, +
+_data2_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_WindowEvent[SDL_WindowEvent])#
+
+* [[keyboardevent]]
+[small]#*keyboardevent* = { +
+_type_: '_keydown_' or '_keyup_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_state_: <<keystate, keystate>>, +
+_repeat_: boolean, +
+_keycode_: integer, +
+_scancode_: integer, +
+_name_: string (see https://wiki.libsdl.org/SDL2/SDL_Keycode[SDL_Keycode)]), +
+_mod_: <<keymod, keymod>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_KeyboardEvent[SDL_KeyboardEvent])#
+
+* [[texteditingevent]]
+[small]#*texteditingevent* = { +
+_type_: '_textediting_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_text_: string, +
+_start_: integer, +
+_length_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_TextEditingEvent[SDL_TextEditingEvent])#
+
+* [[textinputevent]]
+[small]#*textinputevent* = { +
+_type_: '_textinput_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_text_: string, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_TextInputEvent[SDL_TextInputEvent])#
+
+* [[mousemotionevent]]
+[small]#*mousemotionevent* = { +
+_type_: '_mousemotion_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_id_: integer, +
+_x_: integer, +
+_y_: integer, +
+_xrel_: integer, +
+_yrel_: integer, +
+_state_: <<mousebuttonstate, mousebuttonstate>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MouseMotionEvent[SDL_MouseMotionEvent])#
+
+* [[mousebuttonevent]]
+[small]#*mousebuttonevent* = { +
+_type_: '_mousebuttondown_' or '_mousebuttonup_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_id_: integer, +
+_x_: integer, +
+_y_: integer, +
+_button_: <<button, button>>, +
+_state_: <<keystate, keystate>>, +
+_clicks_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MouseButtonEvent[SDL_MouseButtonEvent])#
+
+* [[mousewheelevent]]
+[small]#*mousewheelevent* = { +
+_type_: '_mousewheel_', +
+_timestamp_: integer (milliseconds), +
+_window_: <<window, window>>, +
+_id_: integer, +
+_x_: integer, +
+_y_: integer, +
+_precise_x_: float, +
+_precise_y_: float, +
+_direction_: <<mousewheeldir, mousewheeldir>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent[SDL_MouseWheelEvent])#
+
+* [[joyaxisevent]]
+[small]#*joyaxisevent* = { +
+_type_: '_joyaxismotion_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+_axis_: integer, +
+_value_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyAxisEvent[SDL_JoyAxisEvent])#
+
+* [[joyballevent]]
+[small]#*joyballevent* = { +
+_type_: '_joyballmotion_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+_ball_: integer, +
+_xrel_: integer, +
+_yrel_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyBallEvent[SDL_JoyBallEvent])#
+
+* [[joyhatevent]]
+[small]#*joyhatevent* = { +
+_type_: '_joyhatmotion_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+_hat_: integer, +
+_value_: <<hatstate, hatstate>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyHatEvent[SDL_JoyHatEvent])#
+
+* [[joybuttonevent]]
+[small]#*joybuttonevent* = { +
+_type_: '_joybuttondown_' or '_joybuttonup_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+_button_: integer, +
+_state_: <<keystate, keystate>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyButtonEvent[SDL_JoyButtonEvent])#
+
+* [[joydeviceaddedevent]]
+[small]#*joydeviceaddedevent* = { +
+_type_: '_joydeviceadded_', +
+_timestamp_: integer (milliseconds), +
+_device_index_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyDeviceEvent[SDL_JoyDeviceEvent])#
+
+* [[joydeviceremovedevent]]
+[small]#*joydeviceremovedevent* = { +
+_type_: '_joydeviceremoved_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyDeviceEvent[SDL_JoyDeviceEvent])#
+
+* [[joybatteryevent]]
+[small]#*joybatteryevent* = { +
+_type_: '_joybatteryupdated_', +
+_timestamp_: integer (milliseconds), +
+_joystick_: <<joystick, joystick>>, +
+_id_: integer, +
+_level_: <<joystickpowerlevel, joystickpowerlevel>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_JoyBatteryEvent[SDL_JoyBatteryEvent])#
+
+* [[controlleraxisevent]]
+[small]#*controlleraxisevent* = { +
+_type_: '_controlleraxismotion_', +
+_timestamp_: integer (milliseconds), +
+_controller_: <<gamecontroller, gamecontroller>>, +
+_id_: integer, +
+_axis_: <<controlleraxis, controlleraxis>>, +
+_value_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerAxisEvent[SDL_ControllerAxisEvent])#
+
+* [[controllerbuttonevent]]
+[small]#*controllerbuttonevent* = { +
+_type_: '_controllerbuttondown_' or '_controllerbuttonup_', +
+_timestamp_: integer (milliseconds), +
+_controller_: <<gamecontroller, gamecontroller>>, +
+_id_: integer, +
+_button_: <<controllerbutton, controllerbutton>>, +
+_state_: <<keystate, keystate>>, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerButtonEvent[SDL_ControllerButtonEvent])#
+
+* [[controllerdeviceaddedevent]]
+[small]#*controllerdeviceaddedevent* = { +
+_type_: '_controllerdeviceadded_', +
+_timestamp_: integer (milliseconds), +
+_device_index_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerDeviceEvent[SDL_ControllerDeviceEvent])#
+
+* [[controllerdeviceevent]]
+[small]#*controllerdeviceevent* = { +
+_type_: '_controllerdeviceremoved_' or '_controllerdeviceremapped_', +
+_timestamp_: integer (milliseconds), +
+_controller_: <<gamecontroller, gamecontroller>>, +
+_id_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerDeviceEvent[SDL_ControllerDeviceEvent])#
+
+* [[controllertouchpadevent]]
+[small]#*controllertouchpadevent* = { +
+_type_: '_controllertouchpaddown_', '_controllertouchpadup_', or '_controllertouchpadmotion_', +
+_timestamp_: integer (milliseconds), +
+_controller_: <<gamecontroller, gamecontroller>>, +
+_id_: integer, +
+_touch_id_: integer, +
+_finger_id_: integer, +
+_x_: _float_, +
+_y_: _float_, +
+_pressure_: float, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerTouchpadEvent[SDL_ControllerTouchpadEvent])#
+
+* [[controllersensorevent]]
+[small]#*controllersensorevent* = { +
+_type_: '_controllersensorupdate_', +
+_timestamp_: integer (milliseconds), +
+_controller_: <<gamecontroller, gamecontroller>>, +
+_id_: integer, +
+_sensor_: <<sensortype, sensortype>>
+_data_: {float}[3], +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_ControllerSensorEvent[SDL_ControllerSensorEvent])#
+
+* [[fingerevent]]
+[small]#*fingerevent* = { +
+_type_: '_fingerdown_', '_fingerup_', or '_fingermotion_', +
+_window_: <<window, window>>, +
+_timestamp_: integer (milliseconds), +
+_touch_id_: integer, +
+_finger_id_: integer, +
+_x_: float, +
+_y_: float, +
+_dx_: float, +
+_dy_: float, +
+_pressure_: float, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_TouchFingerEvent[SDL_TouchFingerEvent])#
+
+* [[dollargestureevent]]
+[small]#*dollargestureevent* = { +
+_type_: '_dollargesture_' or '_dollarrecord_', +
+_timestamp_: integer (milliseconds), +
+_touch_id_: integer, +
+_gesture_id_: integer, +
+_num_fingers_: integer, +
+_error_: float, +
+_x_: float, +
+_y_: float, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_DollarGestureEvent[SDL_DollarGestureEvent])#
+
+* [[multigestureevent]]
+[small]#*multigestureevent* = { +
+_type_: '_multigesture_', +
+_timestamp_: integer (milliseconds), +
+_touch_id_: integer, +
+_dtheta_: float, +
+_ddist_: float, +
+_x_: float, +
+_y_: float, +
+_num_fingers_: integer, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_MultiGestureEvent[SDL_MultiGestureEvent])#
+
+* [[dropevent]]
+[small]#*dropevent* = { +
+_type_: '_dropfile_', '_droptext_', '_dropbegin_', or '_dropcomplete_', +
+_timestamp_: integer (milliseconds), +
+_file_: string (pathname), +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_DropEvent[SDL_DropEvent])#
+
+* [[sensorevent]]
+[small]#*sensorevent* = { +
+_type_: '_sensorupdate_', +
+_timestamp_: integer (milliseconds), +
+_sensor_: <<sensor, sensor>>, +
+_id_: integer, +
+_data_: {float}[6], +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_SensorEvent[SDL_SensorEvent])#
+
+* [[userevent]]
+[small]#*userevent* = { +
+_type_: '_userevent_', +
+_timestamp_: integer (milliseconds), +
+_code_: integer, +
+_data_: user defined Lua value, +
+} (rfr: https://wiki.libsdl.org/SDL2/SDL_UserEvent[SDL_UserEvent])#
+
+
