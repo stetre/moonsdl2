@@ -50,9 +50,9 @@ local renderer = sdl.create_renderer(window, nil, sdl.RENDERER_ACCELERATED|sdl.R
 
 local vertices = 
     { --   position           color         
-        {{ 400, 150 }, { 255, 0, 0, 255 }},
-        {{ 200, 450 }, { 0, 0, 255, 255 }},
-        {{ 600, 450 }, { 0, 255, 0, 255 }},
+        { { 400, 150 }, { 255, 0, 0, 255 } },
+        { { 200, 450 }, { 0, 0, 255, 255 } },
+        { { 600, 450 }, { 0, 255, 0, 255 } },
     }
 
 local quit = false
