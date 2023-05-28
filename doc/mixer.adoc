@@ -161,12 +161,12 @@ Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_LoadWav[Mix_LoadWav],
 https://wiki.libsdl.org/SDL2_mixer/Mix_FreeChunk[Mix_FreeChunk].#
 
 [[chunk_play]]
-* _chunk_++:++*play*([_track_], [_loops=0_], [_maxms=-1_]) +
+* _track_ = _chunk_++:++*play*([_track_], [_loops=0_], [_maxms=-1_]) +
 [small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannel[Mix_PlayChannel],
 https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannelTimed[Mix_PlayChannelTimed].#
 
 [[chunk_fade_in]]
-* _chunk_++:++*fade_in*(_ms_, [_track_], [_loopms=0_], [_maxms=-1_]) +
+* _track_ = _chunk_++:++*fade_in*(_ms_, [_track_], [_loopms=0_], [_maxms=-1_]) +
 [small]#Rfr: https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannel[Mix_FadeInChannel],
 https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannelTimed[Mix_FadeInChannelTimed].#
 

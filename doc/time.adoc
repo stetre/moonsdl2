@@ -44,7 +44,7 @@ previously obtained with _<<now, now>>(&nbsp;)_.#
 === timer
 
 [[start_timer]]
-* _timer_ = *start_timer*(_func_) +
+* _timer_ = *start_timer*(_timeout_, _func_) +
 _timer_++:++*stop*( ) +
 [small]#_timeout_: integer (milliseconds). +
 The _func_ callback is executed at the expiration of the timer as *restart = func(timer)*. +

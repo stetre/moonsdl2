@@ -3468,7 +3468,7 @@ Rfr: <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_LoadWav">Mix_LoadWav</a>,
 <div id="chunk_play" class="ulist">
 <ul>
 <li>
-<p><em>chunk</em>:<strong>play</strong>([<em>track</em>], [<em>loops=0</em>], [<em>maxms=-1</em>])<br>
+<p><em>track</em> = <em>chunk</em>:<strong>play</strong>([<em>track</em>], [<em>loops=0</em>], [<em>maxms=-1</em>])<br>
 <span class="small">Rfr: <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannel">Mix_PlayChannel</a>,
 <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_PlayChannelTimed">Mix_PlayChannelTimed</a>.</span></p>
 </li>
@@ -3477,7 +3477,7 @@ Rfr: <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_LoadWav">Mix_LoadWav</a>,
 <div id="chunk_fade_in" class="ulist">
 <ul>
 <li>
-<p><em>chunk</em>:<strong>fade_in</strong>(<em>ms</em>, [<em>track</em>], [<em>loopms=0</em>], [<em>maxms=-1</em>])<br>
+<p><em>track</em> = <em>chunk</em>:<strong>fade_in</strong>(<em>ms</em>, [<em>track</em>], [<em>loopms=0</em>], [<em>maxms=-1</em>])<br>
 <span class="small">Rfr: <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannel">Mix_FadeInChannel</a>,
 <a href="https://wiki.libsdl.org/SDL2_mixer/Mix_FadeInChannelTimed">Mix_FadeInChannelTimed</a>.</span></p>
 </li>
@@ -3681,7 +3681,7 @@ previously obtained with <em><a href="#now">now</a>(&nbsp;)</em>.</span></p>
 <div id="start_timer" class="ulist">
 <ul>
 <li>
-<p><em>timer</em> = <strong>start_timer</strong>(<em>func</em>)<br>
+<p><em>timer</em> = <strong>start_timer</strong>(<em>timeout</em>, <em>func</em>)<br>
 <em>timer</em>:<strong>stop</strong>( )<br>
 <span class="small"><em>timeout</em>: integer (milliseconds).<br>
 The <em>func</em> callback is executed at the expiration of the timer as <strong>restart = func(timer)</strong>.<br>
