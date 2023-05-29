@@ -253,7 +253,7 @@ static int LogicalToWindow(lua_State *L)
     int windowx, windowy;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
     float logicalx = luaL_checknumber(L, 2);
-    float logicaly = luaL_checknumber(L, 2);
+    float logicaly = luaL_checknumber(L, 3);
     SDL_RenderLogicalToWindow(renderer, logicalx, logicaly, &windowx, &windowy);
     lua_pushinteger(L, windowx);
     lua_pushinteger(L, windowy);
@@ -324,7 +324,7 @@ static int DrawPoints(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    point_t *points = checkpointlist(L, 1, &count, NULL);
+    point_t *points = checkpointlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawPoints(renderer, points, count);
     Free(L, points);
     CheckError(L, ec);
@@ -347,7 +347,7 @@ static int DrawLines(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    point_t *points = checkpointlist(L, 1, &count, NULL);
+    point_t *points = checkpointlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawLines(renderer, points, count);
     Free(L, points);
     CheckError(L, ec);
@@ -368,7 +368,7 @@ static int DrawRects(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    rect_t *rects = checkrectlist(L, 1, &count, NULL);
+    rect_t *rects = checkrectlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawRects(renderer, rects, count);
     Free(L, rects);
     CheckError(L, ec);
@@ -389,7 +389,7 @@ static int FillRects(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    rect_t *rects = checkrectlist(L, 1, &count, NULL);
+    rect_t *rects = checkrectlist(L, 2, &count, NULL);
     int ec = SDL_RenderFillRects(renderer, rects, count);
     Free(L, rects);
     CheckError(L, ec);
@@ -452,7 +452,7 @@ static int DrawPointsF(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    fpoint_t *points = checkfpointlist(L, 1, &count, NULL);
+    fpoint_t *points = checkfpointlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawPointsF(renderer, points, count);
     Free(L, points);
     CheckError(L, ec);
@@ -486,7 +486,7 @@ static int DrawLinesF(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    fpoint_t *points = checkfpointlist(L, 1, &count, NULL);
+    fpoint_t *points = checkfpointlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawLinesF(renderer, points, count);
     Free(L, points);
     CheckError(L, ec);
@@ -508,7 +508,7 @@ static int DrawRectsF(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    frect_t *rects = checkfrectlist(L, 1, &count, NULL);
+    frect_t *rects = checkfrectlist(L, 2, &count, NULL);
     int ec = SDL_RenderDrawRectsF(renderer, rects, count);
     Free(L, rects);
     CheckError(L, ec);
@@ -529,7 +529,7 @@ static int FillRectsF(lua_State *L)
     {
     int count;
     renderer_t *renderer = checkrenderer(L, 1, NULL);
-    frect_t *rects = checkfrectlist(L, 1, &count, NULL);
+    frect_t *rects = checkfrectlist(L, 2, &count, NULL);
     int ec = SDL_RenderFillRectsF(renderer, rects, count);
     Free(L, rects);
     CheckError(L, ec);
