@@ -2,7 +2,7 @@
 
 MoonSDL2 is a Lua binding library for the [Simple DirectMedia Layer (SDL2)](https://www.libsdl.org).
 
-It runs on GNU/Linux and on Windows (MSYS2/MinGW) and requires 
+It runs on GNU/Linux and on Windows (MSYS2/MinGW or MSVC) and requires
 [Lua](http://www.lua.org/) (>=5.3),
 [SDL2](https://github.com/libsdl-org/SDL/releases/) (>= 2.26.0),
 [SDL_image](https://github.com/libsdl-org/SDL_image/releases/) (>= 2.6.3),
@@ -32,6 +32,27 @@ moonsdl2$ make
 moonsdl2$ sudo make install
 ```
 
+**On Windows Using Visual Studio**
+
+```
+> git clone https://github.com/stetre/moonsdl2/
+> cd moonsdl2\src
+> mingw32-make -f Makefile.msvc ^
+    LUAVER=<lua version> ^
+    LUA_INCDIR=<path to directory containing lua.h> ^
+    LUA_LIBDIR=<path to directory containing lua5X.dll> ^
+    SDL_INCDIR=<path to directory containing SDL2.h, SDL2_image.h, etc.> ^
+    SDL_LIBDIR=<path to directory containing SDL2.lib, SDL2_image.lib, etc.>
+```
+
+`<lua version>` is in dotted notation, like "5.1" (no quotes).
+
+Ensure all the other directories don't have spaces in their paths.
+
+If you don't have access to `mingw32-make`, you can edit `src\rebuild.bat` to
+suit your Lua version and paths, and then run it (from the `src` directory) to
+perform a full rebuild.
+
 #### Example
 
 The example below creates a window and draws a triangle using SDL2's 2D renderer.
@@ -48,8 +69,8 @@ local window = sdl.create_window("Hello, triangle!", nil, nil, 800, 600, sdl.WIN
 
 local renderer = sdl.create_renderer(window, nil, sdl.RENDERER_ACCELERATED|sdl.RENDERER_PRESENTVSYNC)
 
-local vertices = 
-    { --   position           color         
+local vertices =
+    { --   position           color
         { { 400, 150 }, { 255, 0, 0, 255 } },
         { { 200, 450 }, { 0, 0, 255, 255 } },
         { { 600, 450 }, { 0, 255, 0, 255 } },

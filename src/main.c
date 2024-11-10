@@ -136,7 +136,7 @@ static const struct luaL_Reg Functions[] =
         { NULL, NULL } /* sentinel */
     };
 
-int luaopen_moonsdl2(lua_State *L)
+EXPORT int luaopen_moonsdl2(lua_State *L)
 /* Lua calls this function to load the module */
     {
     moonsdl2_L = L;
