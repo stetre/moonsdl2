@@ -25,7 +25,6 @@ MAKEFLAGS += --no-builtin-rules --no-builtin-variables
 .PHONY := clean rebuild
 
 CC := cl.exe
-LD := link.exe
 
 LIBDIRS := /LIBPATH:$(LUA_LIBDIR) /LIBPATH:$(SDL_LIBDIR)
 LIBS = lua$(subst .,,$(LUAVER)).lib \
@@ -39,9 +38,10 @@ else
 	RTLOPT := /MT
 endif
 
-CCFLAGS := /c /O2 /std:c11 $(RTLOPT) /LD /nologo /Zc:preprocessor /DMSVC_BUILDDLL \
+CCFLAGS := /nologo /c /O2 /std:c11 /LD $(RTLOPT) /Zc:preprocessor /DMSVC_BUILDDLL \
            /DLUAVER=$(LUAVER) $(INCDIRS)
-LDFLAGS := /DLL /MACHINE:X64 /NOLOGO /OPT:NOREF $(LIBDIRS)
+LINKFLAGS := /nologo $(RTLOPT) /LD /Fe:$(DLLNAME:%.dll=%) /link /MACHINE:X64 /OPT:NOREF \
+             $(LIBDIRS)
 
 SRC := $(wildcard *.c)
 HEADERS := $(wildcard *.h)
@@ -51,7 +51,7 @@ OBJS := $(SRC:%.c=%.obj)
 	$(CC) $(CCFLAGS) $<
 
 $(DLLNAME): $(OBJS)
-	$(LD) $(LDFLAGS) /OUT:$@ $^ $(LIBS)
+	$(CC) $^ $(LIBS) $(LINKFLAGS)
 
 clean: FILES_TO_DEL := $(wildcard *.obj $(DLLNAME) $(DLLNAME:%.dll=%.exp) $(DLLNAME:%.dll=%.lib))
 clean:
@@ -59,4 +59,4 @@ clean:
 
 rebuild: clean
 	$(CC) $(CCFLAGS) $(SRC)
-	$(LD) $(LDFLAGS) /OUT:$(DLLNAME) *.obj $(LIBS)
+	$(CC) *.obj $(LIBS) $(LINKFLAGS)
