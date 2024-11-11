@@ -3,7 +3,10 @@
 *.log
 *.so
 *.dll
+*.exp
+*.lib
 *.o
+*.obj
 *.swp
 *.symbols
 core.*

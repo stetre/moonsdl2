@@ -29,6 +29,13 @@
 #ifdef LINUX
 #define _ISOC11_SOURCE /* see man aligned_alloc(3) */
 #endif
+
+#ifdef MSVC_BUILDDLL
+  #define EXPORT __declspec(dllexport)
+#else
+  #define EXPORT
+#endif
+
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
@@ -62,7 +69,7 @@ void moonsdl2_utils_init(lua_State *L);
 #define copytable moonsdl2_copytable
 int copytable(lua_State *L);
 #define noprintf moonsdl2_noprintf
-int noprintf(const char *fmt, ...); 
+int noprintf(const char *fmt, ...);
 #define now moonsdl2_now
 double now(void);
 #define sleeep moonsdl2_sleeep
@@ -260,7 +267,7 @@ void pushsensortypeorint(lua_State *L, SDL_SensorType type);
 /* main.c */
 extern lua_State *moonsdl2_L;
 extern int moonsdl2_audio_is_open;
-int luaopen_moonsdl2(lua_State *L);
+EXPORT int luaopen_moonsdl2(lua_State *L);
 void moonsdl2_open_tracing(lua_State *L);
 void moonsdl2_open_flags(lua_State *L);
 void moonsdl2_open_enums(lua_State *L);
@@ -340,13 +347,13 @@ void moonsdl2_open_messagebox(lua_State *L);
     ts = now();                                             \
 } while(0);
 
-#else 
+#else
 
 #define DBG noprintf
 #define TR()
 #define BK()
-#define TSTART do {} while(0) 
-#define TSTOP do {} while(0)    
+#define TSTART do {} while(0)
+#define TSTOP do {} while(0)
 
 #endif /* DEBUG ------------------------------------------------- */
 

@@ -1,0 +1,62 @@
+# This requires GNU Make, as, for instance, mingw32-make.exe from MSYS2
+#
+# If you don't have GNU Make, you can use rebuild.bat to build the DLL
+# from scratch with no dependency checking. See that file for info.
+
+# Change these variables (or give them on the make command line) to suit
+# your Lua version and various local paths.
+LUAVER := 5.1
+LUA_LIBDIR := C:\Code\Tools\Lua\LuaJIT\lib
+LUA_INCDIR := C:\Code\Tools\Lua\LuaJIT\include
+SDL_LIBDIR := C:\Code\Tools\SDL2\lib
+SDL_INCDIR := C:\Code\Tools\SDL2\include\SDL2
+
+# This is the DLL that you'll need to load into Lua
+DLLNAME := moonsdl2.dll
+
+# We build a Release DLL dynamically linked to the MSVCR<version>.DLL runtime
+# library. If you would prefer the runtime library statically linked, set
+# DYNAMIC_RTL=0
+DYNAMIC_RTL := 1
+
+SHELL := cmd.exe
+MAKEFLAGS += --no-builtin-rules --no-builtin-variables
+.DEFAULT_GOAL := moonsdl2.dll
+.PHONY := clean rebuild
+
+CC := cl.exe
+
+LIBDIRS := /LIBPATH:$(LUA_LIBDIR) /LIBPATH:$(SDL_LIBDIR)
+LIBS = lua$(subst .,,$(LUAVER)).lib \
+       SDL2.lib SDL2_image.lib SDL2_ttf.lib SDL2_mixer.lib
+
+INCDIRS := /I. /I$(LUA_INCDIR) /I$(SDL_INCDIR)
+
+ifeq ($(DYNAMIC_RTL),1)
+	RTLOPT := /MD
+else
+	RTLOPT := /MT
+endif
+
+CCFLAGS := /nologo /c /O2 /std:c11 /LD $(RTLOPT) /Zc:preprocessor /DMSVC_BUILDDLL \
+           /DLUAVER=$(LUAVER) $(INCDIRS)
+LINKFLAGS := /nologo $(RTLOPT) /LD /Fe:$(DLLNAME:%.dll=%) /link /MACHINE:X64 /OPT:NOREF \
+             $(LIBDIRS)
+
+SRC := $(wildcard *.c)
+HEADERS := $(wildcard *.h)
+OBJS := $(SRC:%.c=%.obj)
+
+%.obj: %.c $(HEADERS)
+	$(CC) $(CCFLAGS) $<
+
+$(DLLNAME): $(OBJS)
+	$(CC) $^ $(LIBS) $(LINKFLAGS)
+
+clean: FILES_TO_DEL := $(wildcard *.obj $(DLLNAME) $(DLLNAME:%.dll=%.exp) $(DLLNAME:%.dll=%.lib))
+clean:
+	$(if $(FILES_TO_DEL),del /Q $(FILES_TO_DEL),@echo Already clean)
+
+rebuild: clean
+	$(CC) $(CCFLAGS) $(SRC)
+	$(CC) *.obj $(LIBS) $(LINKFLAGS)
